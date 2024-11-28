@@ -1,0 +1,76 @@
+# Environnement virtuel
+env/
+venv/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+
+# Fichiers spécifiques à l'OS
+.DS_Store
+Thumbs.db
+
+# Paramètres de l'éditeur de code
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Fichiers de log
+*.log
+
+# Fichiers de configuration secrets
+*.env
+.env.*
+
+# Fichiers statiques collectés
+# /staticfiles/
+# staticfiles/
+
+# Cache de Django
+*.pyc
+*.pyo
+__pycache__/
+
+# Fichiers de migration
+*.mo
+*.pot
+
+# Fichiers générés pour les tests
+*.coverage
+htmlcov/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.tox/
+.cache/
+.pytest_cache/
+*.seed
+*.sponge
+
+# Fichiers générés par pip
+*.lock
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Contenu généré pour les médias (si non versionné)
+# media/
+# uploads/
+
+# Fichiers de builds
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Spécifique à macOS
+*.DS_Store
+
+# Spécifique à Windows
+Thumbs.db
+Desktop.ini
+
+# Spécifique à Linux
+*~
