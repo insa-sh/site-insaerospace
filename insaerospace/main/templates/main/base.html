@@ -1,10 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 
 <html>
     <head>
         <meta charset="utf-8">
-        <title>INSAEROSPACE</title>
-        <link rel="stylesheet" href="style.css">
+        <title>{% block title %}{% endblock %} | INSAEROSPACE</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'main/base.css' %}">
     </head>
 
     <body>
