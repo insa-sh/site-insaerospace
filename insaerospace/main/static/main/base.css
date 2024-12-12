@@ -141,10 +141,11 @@ div#header-site-name>a {
     color: inherit;
     font-family: "Nasalization";
     font-size: 24px;
+    font-weight: 600;
 }
 
 div#header-site-name>img {
-    height: 50px;
+    height: 60px;
 }
 
 
@@ -153,7 +154,11 @@ span.logo-red-part {
     color: var(--red-insaerospace);
 }
 
-
+nav a {
+    font-family: "Raleway";
+    font-weight: 700;
+    font-size: 18px;
+}
 
 
 

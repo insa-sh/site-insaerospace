@@ -1,12 +1,17 @@
 {% extends "main/base.html" %}
+{% load static %}
 
 {% block title %}Accueil{% endblock %}
 
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/accueil.css' %}">
+
+{% endblock %}
+
 {% block content %}
-<main>
     <section>
         <h2>INSAEROSPACE</h2>
-        <p>Association d’étudiants ingénieurs passionnés d’aérospatiale de l’INSA Hauts-de-France </p>
+        <p>Association d'étudiants ingénieurs passionnés d'aérospatiale de l'INSA Hauts-de-France </p>
     </section>
-</main>
 {% endblock %}
