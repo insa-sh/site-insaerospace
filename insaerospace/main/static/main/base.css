@@ -1,20 +1,120 @@
+
+/* FONTS */
+
+/* Raleway */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Nasalization */
+/* import local font */
+@font-face {
+    font-family: 'Nasalization';
+    src: url('/static/fonts/nasalization-rg.otf') format('opentype');
+}
+
+
+
+
+/* STYLE VARIABLES */
+
+
+* {
+    --red-insaerospace: #CC0D0B;
+
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+a {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+
+
+
+
+/* GLOBAL ELEMENTS */
+* {
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+
+
+
+
+
+
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 6px 20px;
+    height: 80px;
+    /* background-color: #ffffff; */
+    color: #000000;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+    right: 0;
+    left: 0;
 }
 
-li {
-    margin-left: 100px;
+
+
+ #header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 120px;
+    z-index: -1;
+ }
+#header-bg>path {
+    /* width: 100vw; */
+    /* height: 100%; */
 }
+
+
 
 nav > ul {
     display: flex;
     justify-content: space-between;
     list-style-type: none;
-    margin-right: 50px;
+    gap: 4vw;
 }
 
 nav > ul a {
     text-decoration: none;
     color: inherit;
+    padding: 8px 16px;
+}
+
+
+div#header-site-name {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+}
+div#header-site-name>a {
+    text-decoration: none;
+    color: inherit;
+    font-family: "Nasalization";
+}
+
+div#header-site-name>img {
+    height: 40px;
+}
+
+
+/* logo */
+span.logo-red-part {
+    color: var(--red-insaerospace);
 }
