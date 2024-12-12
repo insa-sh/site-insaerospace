@@ -20,11 +20,20 @@
 * {
     --red-insaerospace: #CC0D0B;
 
+
+
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
 }
 
 body {
     background-color: #000000;
     color: #ffffff;
+    min-height: 120vh;
+    /* overflow-x: hidden; */
 }
 
 a {
@@ -45,12 +54,6 @@ p {
 
 
 /* GLOBAL ELEMENTS */
-* {
-    margin: 0;
-    box-sizing: border-box;
-
-}
-
 
 
 
@@ -66,8 +69,8 @@ header {
     height: 110px;
     /* background-color: #ffffff; */
     color: #000000;
-    position: sticky;
     position: -webkit-sticky;
+    position: sticky;
     top: 0;
     z-index: 1000;
     right: 0;
