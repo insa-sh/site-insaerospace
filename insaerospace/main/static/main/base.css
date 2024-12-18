@@ -126,11 +126,18 @@ nav > ul {
     gap: 4vw;
 }
 
-nav > ul a {
+nav a {
     text-decoration: none;
     color: inherit;
     padding: 8px 16px;
+    transition: color 0.3s;
 }
+nav  a:hover, nav a.opened{
+    color: var(--red-insaerospace);
+}
+
+
+
 
 
 div#header-site-name {
