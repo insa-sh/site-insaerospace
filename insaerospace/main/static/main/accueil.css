@@ -37,8 +37,25 @@ main {
     -webkit-overflow-scrolling: touch; 
 
     text-align: center;
+
+
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(255,255,255,0) 100%);
+    
   
 }
+
+.caroussel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(ellipse 300% 50% at center 100%,rgb(0, 0, 0) 10%,transparent 90%,transparent); /* Dégradé noir */
+    pointer-events: none; /* Assure que les clics passent à travers l'overlay */
+    z-index: 1; /* Place l'overlay au-dessus de l'image */
+}
+
 
 .caroussel>div {
     min-width: 100%;
@@ -67,6 +84,9 @@ main {
     text-shadow: 2px 2px 40px rgba(0, 0, 0, 0.7);
     height: 0;
     transform: translateY(80vh);
+
+    position: relative;  /* sinon par défaut c'est static et on ne peut pas modifier z-index */
+    z-index: 2; /* pour que le texte soit au-dessus de l'overlay */
     
 
 }
