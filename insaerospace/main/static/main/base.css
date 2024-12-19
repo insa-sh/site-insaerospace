@@ -49,6 +49,13 @@ p {
     /* line-height: 1.5; */
 }
 
+h1,h2 {
+    color: inherit;
+    font-family: "Nasalization";
+    font-size: 24px;
+    font-weight: 600;
+}
+
 
 
 
