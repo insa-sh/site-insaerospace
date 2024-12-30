@@ -29,7 +29,7 @@
     box-sizing: border-box;
 
     /* empêcher Safari de redimensionner les textes comme bon lui semble */
-    -webkit-text-size-adjust:none;
+    /* -webkit-text-size-adjust:none; */
 
 
 }
