@@ -10,12 +10,14 @@
 {% endblock %}
 
 {% block content %}
+<link rel="preload" as="image" href="{% static 'images/photos_accueil/minifusee_champ.jpg' %}" />
+
 <section>
     <div id="caroussel-text-content">
         <h2><span class="logo-red-part">INSA</span>erospace</h2>
         <p>Association d'étudiants ingénieurs passionnés d'aérospatiale de l'INSA Hauts-de-France</p>
     </div>
-    <div class="caroussel">
+    <div class="caroussel" onload="addAutoScroll();">
 
         <div class="caroussel-image"
             style="background-image: url('{% static 'images/photos_accueil/equipe2023.jpg' %}');">
@@ -41,4 +43,5 @@
         laborum.</p>
 
 </section>
+<script src="{% static 'main/scripts/accueil.js' %}"></script>
 {% endblock %}
