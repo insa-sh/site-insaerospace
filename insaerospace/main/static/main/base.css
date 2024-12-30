@@ -13,12 +13,13 @@
 
 
 
-
 /* STYLE VARIABLES */
 
 
 * {
     --red-insaerospace: #CC0D0B;
+
+    --transition-duration: 0.3s;
 
 
 
@@ -26,6 +27,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    /* empêcher Safari de redimensionner les textes comme bon lui semble */
+    -webkit-text-size-adjust:none;
+
 
 }
 
@@ -64,7 +69,10 @@ h1,h2 {
 
 
 
+header>*, header>*>* {
+    transition: all var(--transition-duration);
 
+}
 
 
 header {
@@ -82,11 +90,12 @@ header {
     z-index: 1000;
     right: 0;
     left: 0;
-    overflow: hidden;
+    /* overflow: hidden; */
 
     font-family: "Raleway";
 
-    transition: border-radius 0.5s, height 0.5s, background-color 0.5s, padding 0.5s;
+    /* transition: border-radius 0.5s, height 0.5s, background-color 0.5s, padding 0.5s; */
+    transition: all var(--transition-duration);
 
 }
 
@@ -182,9 +191,23 @@ nav a {
 
 
 
+
+/* computer */
+@media (min-width: 800px) {
+    .mobile-only {
+        display: none !important;
+    }
+}
+
+
+
+
 /* mobile */
 
 @media (max-width: 800px) {
+    .computer-only {
+        display: none;
+    }
     header {
         padding: 6px 10px;
         height: 80px;
@@ -194,5 +217,91 @@ nav a {
         border-bottom-left-radius: 0%;
 
     
+    }
+
+
+    /* menu de navigation mobile */
+    header>nav {
+        position: absolute;
+        top: 80px;
+        right: 0;
+        left: 0;
+
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+
+        margin: 20px 12px;
+        padding: 12px;
+        border-radius: 12px;
+
+        /* opacity: 0; */
+        /* make it not a probleme for the mouse */
+        pointer-events: none;
+        user-select: none;
+        display: none;
+
+
+    }
+
+    header>nav>ul {
+        flex-direction: column;
+        gap: 8px;
+        
+    }
+    header>div#hamburger-button {
+        font-size: 24px;
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+
+    header>nav.open {
+        display: block;
+        animation: openMobileMenu var(--transition-duration) ;
+        animation-fill-mode: forwards;
+        opacity: 1;
+        pointer-events: all;
+        user-select: all;
+
+    }
+
+
+    header>nav.closed {
+        display: block;
+        animation: closeMobileMenu var(--transition-duration);
+        animation-fill-mode: forwards;
+        user-select: none;
+        pointer-events: none;
+        transform: translateY(-40%) scale(1.05);
+
+        
+
+    }
+
+    /* animation close/open the mobile menu (go up/down) */
+
+    @keyframes openMobileMenu {
+        from {
+            transform: translateY(-20%) scale(1.05);
+            
+        }
+        to {
+            transform: translateY(0) scale(1);
+        }
+    }
+ 
+
+    @keyframes closeMobileMenu {
+        0% {
+            transform: translateY(0);
+        }
+        to {
+            transform: translateY(-20%) scale(1.05);
+            opacity: 0;
+            /* make it not a probleme for the mouse */
+            pointer-events: none;
+            user-select: none;
+
+        }
     }
 }

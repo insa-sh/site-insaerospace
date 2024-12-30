@@ -102,5 +102,19 @@ main {
     word-wrap: break-word;
     max-width: 100%;
 
+    padding: 0 20px;
 
+
+}
+
+
+@media (max-width: 800px) {
+
+    #caroussel-text-content h2 {
+        font-size: 40px;
+    }
+
+    #caroussel-text-content p {
+        font-size: 16px;
+    }
 }

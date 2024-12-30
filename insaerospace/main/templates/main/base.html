@@ -8,6 +8,12 @@
         <title>{% block title %}{% endblock %} | INSAEROSPACE</title>
         <link rel="stylesheet" type="text/css" href="{% static 'main/base.css' %}">
         <link rel="shortcut icon" href="{% static 'images/logo/favicon.svg' %}" type="image/x-svgk,lmù">
+
+        <!-- icons -->
+        <script src="https://kit.fontawesome.com/51918b7d55.js" crossorigin="anonymous"></script>
+
+        <!-- header script -->
+         <script src="{% static 'main/scripts/header.js' %}"></script>
         {% block extrahead %}
         {% endblock %}
     </head>
@@ -22,13 +28,14 @@
                 <img src="/static/images/logo/logo-insaerospace.svg" alt="Logo INSAerospace">
                 <a href="/"><span class="logo-red-part">INSA</span>erospace</a>
             </div>
-            <nav>
+            <nav id="nav-menu" class="">
                 <ul>
-                    <a href="#">Nos Projets</a>
-                    <a href="#">La team</a>
-                    <a href="#">Nous contacter</a>
+                    <a href="#"><i class="fa-solid fa-caret-right mobile-only"></i> Nos Projets</a>
+                    <a href="#"><i class="fa-solid fa-caret-right mobile-only"></i> La team</a>
+                    <a href="#"><i class="fa-solid fa-caret-right mobile-only"></i> Nous contacter</a>
                 </ul>
             </nav>
+            <div id="hamburger-button" class="mobile-only" onclick="toggleNavMenu()" tabindex="0"><i class="fa-solid fa-bars" ></i></div>
         </header>
 
         <main>
