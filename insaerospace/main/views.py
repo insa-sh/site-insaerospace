@@ -11,3 +11,7 @@ def accueil(request):
 
 def nosProjets(request):
     return render(request, 'main/nos-projets.html')
+
+
+def nosMembres(request):
+    return render(request, 'main/nos-membres.html')
