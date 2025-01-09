@@ -26,13 +26,13 @@
             </svg> -->
                 
             <div id="header-site-name">
-                <img src="/static/images/logo/logo-insaerospace.svg" alt="Logo INSAerospace">
+                <img src="{% static '/images/logo/logo-insaerospace.svg' %}" alt="Logo INSAerospace">
                 <a href="/"><span class="logo-red-part">INSA</span>erospace</a>
             </div>
             <nav id="nav-menu" class="">
                 <ul>
-                    <a href="#"><i class="fa-solid fa-caret-right mobile-only"></i> Nos Projets</a>
-                    <a href="#"><i class="fa-solid fa-caret-right mobile-only"></i> La team</a>
+                    <a href="{% url 'nos-projets' %}"><i class="fa-solid fa-caret-right mobile-only"></i> Nos Projets</a>
+                    <a href="{% url 'nos-membres'%}"><i class="fa-solid fa-caret-right mobile-only"></i> La team</a>
                     <a href="#"><i class="fa-solid fa-caret-right mobile-only"></i> Nous contacter</a>
                 </ul>
             </nav>
@@ -41,6 +41,7 @@
 
         <main>
         {% block content %}
+
         {% endblock %}
         </main>
 
