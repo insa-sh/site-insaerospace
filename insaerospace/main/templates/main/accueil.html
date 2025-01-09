@@ -1,0 +1,47 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Accueil{% endblock %}
+
+
+{% block extrahead %}
+<link rel="stylesheet" type="text/css" href="{% static 'main/accueil.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<link rel="preload" as="image" href="{% static 'images/photos_accueil/minifusee_champ.jpg' %}" />
+
+<section>
+    <div id="caroussel-text-content">
+        <h2><span class="logo-red-part">INSA</span>erospace</h2>
+        <p>Association d'étudiants ingénieurs passionnés d'aérospatiale de l'INSA Hauts-de-France</p>
+    </div>
+    <div class="caroussel" onload="addAutoScroll();">
+
+        <div class="caroussel-image"
+            style="background-image: url('{% static 'images/photos_accueil/equipe2023.jpg' %}');">
+        </div>
+        <div class="caroussel-image"
+            style="background-image: url('{% static 'images/photos_accueil/lancement-micro-1.jpg' %}');">
+        </div>
+        <div class="caroussel-image"
+        style="background-image: url('{% static 'images/photos_accueil/micro-pull-insa.jpg' %}');">
+    </div>
+
+        <div class="caroussel-image"
+            style="background-image: url('{% static 'images/photos_accueil/minifusee_champ.jpg' %}');"></div>
+        <div class="caroussel-image" style="background-image: url('{% static 'images/photos_accueil/soudure.jpg' %}');">
+        </div>        <div class="caroussel-image"
+            style="background-image: url('{% static 'images/photos_accueil/seance-1.jpg' %}');">
+        </div>
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+        laborum.</p>
+
+</section>
+<script src="{% static 'main/scripts/accueil.js' %}"></script>
+{% endblock %}
