@@ -108,7 +108,7 @@ main {
 }
 
 .stats {
-    height: 100px;
+    height: 150px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -116,8 +116,14 @@ main {
     margin: 80px 120px 160px 120px;
 }
 
+.groupe {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
 .barre {
-    width: 10px;
+    width: 13px;
     height: 100%;
     background-color: var(--red-insaerospace);
 }
@@ -125,16 +131,23 @@ main {
 .valeur {
     height: 100%;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items:start;
+    justify-content: center;
+    gap: 16px;
 }
 
 .valeur > p {
-    padding: 30px 40px;
+    padding-left: 40px;
+    padding-right: 40px;
     color: #FFF;
     font-family: Raleway;
     font-size: 32px;
     font-weight: 700;
+}
+
+.nombre {
+    font-size: 48px !important;
 }
 
 
