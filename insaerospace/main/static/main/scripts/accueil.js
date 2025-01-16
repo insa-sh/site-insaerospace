@@ -41,9 +41,10 @@ function startNumberAnimation() {
             $(this).rollNumber({
                 number: $(this).data('number'),
                 fontStyle: {
-                    fontSize: 48,
+                    'font-size': 54,
                     color: '#FFF',
-                    fontFamily: 'Railway',
+                    'font-family': 'Raleway',
+                    'font-weight': 900,
                 }
             });
             $(this).addClass('animated'); // Ajouter une classe pour indiquer que l'animation a déjà eu lieu
