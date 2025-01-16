@@ -13,9 +13,9 @@ header {
 }
 
 
-main {
-    /* padding-top: 110px; */
-}
+/* main {
+    padding-top: 110px;
+} */
 
 
 
@@ -144,10 +144,6 @@ main {
     font-family: Raleway;
     font-size: 32px;
     font-weight: 700;
-}
-
-.nombre {
-    font-size: 48px !important;
 }
 
 

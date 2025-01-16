@@ -3,10 +3,10 @@
 
 {% block title %}Accueil{% endblock %}
 
-
 {% block extrahead %}
 <link rel="stylesheet" type="text/css" href="{% static 'main/accueil.css' %}">
-
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>    
+<script src="{% static 'main/scripts/jquery.rollNumber.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -36,32 +36,31 @@
             style="background-image: url('{% static 'images/photos_accueil/seance-1.webp' %}');">
         </div>
     </div>
+   
     <div class="stats">
         <div class="groupe">
             <div class="barre"></div>
             <div class="valeur">
-                <p class="nombre">35</p>
+                <p class="nombre" data-number="35"></p>
                 <p>Membres actifs</p>
             </div>
         </div>
-        
         <div class="groupe">
             <div class="barre"></div>
             <div class="valeur">
-                <p class="nombre">27</p>
+                <p class="nombre" data-number="27"></p>
                 <p>Micro-fusées/an</p>
             </div>
         </div>
-
         <div class="groupe">
             <div class="barre"></div>
             <div class="valeur">
-                <p class="nombre">03</p>
+                <p class="nombre" data-number="03"></p>
                 <p>Années d'experiences</p>
             </div>
         </div>
     </div>
-
 </section>
+
 <script src="{% static 'main/scripts/accueil.js' %}"></script>
 {% endblock %}
