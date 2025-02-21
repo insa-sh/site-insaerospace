@@ -1,9 +1,7 @@
-import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-
-async function fetchArticles() {
+async function fetchProjects() {
     try {
         // Modifier l'URL de la requête pour inclure un paramètre de requête pour les articles sans catégorie
-        const response = await fetch('/api/projets/');
+        const response = await fetch('/api/fetch_projets');
         const data = await response.json();
         const articles = data.data;
         console.log('Fetched articles:', articles);
@@ -21,8 +19,8 @@ async function fetchArticles() {
                     return `
                         <div class="article">
                             <h2><a href="/nos-projets/${article.slug}/">${article.title}</a></h2>
-                            <p>${article.description}</p>
-                            <p><strong>Auteur:</strong> ${article.author ? article.author.name : 'Anonyme'}</p>
+                            ${article.description ? `<p>${article.description}</p>` : ''}
+                            ${article.author ? `<p><strong>Auteur:</strong> ${article.author.name}</p>` : ''}
                             <p><strong>Date:</strong> ${formattedDate}</p>
                         </div>
                     `;
@@ -35,4 +33,4 @@ async function fetchArticles() {
     }
 }
 
-fetchArticles();
+fetchProjects();
