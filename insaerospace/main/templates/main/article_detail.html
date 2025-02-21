@@ -1,0 +1,9 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Article Details{% endblock %}
+
+{% block content %}
+<div id="articlesContainer"></div>
+<script type="module" src="{% static 'main/scripts/article.js' %}"></script>
+{% endblock %}

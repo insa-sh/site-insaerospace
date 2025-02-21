@@ -23,5 +23,6 @@ urlpatterns = [
     path('', views.accueil, name='accueil'),
     path('nos-projets/', views.nosProjets, name='nos-projets'),
     path('nos-membres/', views.nosMembres, name='nos-membres'),
-    path('api/articles/', views.fetch_articles, name='fetch_articles')
+    path('api/articles/', views.fetch_articles, name='fetch_articles'),
+    path('nos-projets/<slug:slug>/', views.article_detail, name='article_detail'),
 ]
