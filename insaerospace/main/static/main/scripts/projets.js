@@ -2,14 +2,15 @@ import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
 async function fetchArticles() {
     try {
-        const response = await fetch('/api/articles/');
+        // Modifier l'URL de la requête pour inclure un paramètre de requête pour les articles sans catégorie
+        const response = await fetch('/api/projets/');
         const data = await response.json();
         const articles = data.data;
-        console.log(articles);
+        console.log('Fetched articles:', articles);
+
         if (Array.isArray(articles)) {
             const articlesContainer = document.getElementById('articles-container');
             articlesContainer.innerHTML = articles
-                .filter(article => article.category === null) // Filtrer les articles dont la catégorie est null
                 .map(article => {
                     const date = new Date(article.createdAt);
                     const formattedDate = date.toLocaleDateString('fr-FR', {

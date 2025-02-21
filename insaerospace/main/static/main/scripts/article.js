@@ -2,15 +2,16 @@ import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
 async function fetchArticles() {
     try {
-        const response = await fetch('/api/articles/');
-        const data = await response.json();
-        const articles = data.data;
-        console.log('Fetched articles:', articles);
-
         // Récupérer le slug de l'URL
         const urlParts = window.location.pathname.split('/');
         const parentSlug = urlParts[urlParts.length - 2]; // Assuming the slug is the second last part of the URL
         console.log('Parent slug:', parentSlug);
+
+        // Modifier l'URL de la requête pour inclure le slug comme paramètre de requête
+        const response = await fetch(`/api/articles/`);
+        const data = await response.json();
+        const articles = data.data;
+        console.log('Fetched articles:', articles);
 
         if (Array.isArray(articles)) {
             const articlesContainer = document.getElementById('articlesContainer');
