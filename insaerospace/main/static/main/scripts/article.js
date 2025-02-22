@@ -33,15 +33,15 @@ async function fetchArticles() {
                     <div class="article">
                         <h2>${article.title}</h2>
                         ${article.description ? `<p>${article.description}</p>` : ''}
-                        <div>${Array.isArray(article.content)
-                        ? article.content.map(item => item && item.body ? marked(item.body) : '').join('<br>')
-                        : 'No content available'}</div>
                         ${article.author ? `<p><strong>Auteur:</strong> ${article.author.name}</p>` : ''}
                         <p><strong>Date:</strong> ${new Date(article.createdAt).toLocaleDateString('fr-FR', {
                             day: '2-digit',
                             month: '2-digit',
                             year: 'numeric'
                         })}</p>
+                        <div>${Array.isArray(article.content)
+                        ? article.content.map(item => item && item.body ? marked(item.body) : '').join('<br>')
+                        : 'No content available'}</div>
                     </div>
                 `
             }
