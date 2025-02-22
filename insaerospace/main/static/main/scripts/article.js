@@ -4,38 +4,38 @@ async function fetchArticles() {
     try {
         // Récupérer le slug de l'URL
         const urlParts = window.location.pathname.split('/');
-        const parentSlug = urlParts[urlParts.length - 2]; // Assuming the slug is the second last part of the URL
-        console.log('Parent slug:', parentSlug);
+        const articleSlug = urlParts[urlParts.length - 2]; // L'avant dernier car le dernier est vide
+        const projectSlug = urlParts[urlParts.length - 3]; // Le slug du projet
+        console.log('Article:', articleSlug);
+        console.log('Projet:', projectSlug);
+
+        // par défaut, un / est rajouté en fin d'url donc le dernier element du tableau est ""
 
         // Modifier l'URL de la requête pour inclure le slug comme paramètre de requête
-        const response = await fetch(`/api/fetch_articles?slug=${parentSlug}`);
+        const response = await fetch(`/api/fetch_articles?slug=${articleSlug}`);
         const data = await response.json();
-        const { parent_article, child_articles } = data;
-        console.log('Fetched articles:', { parent_article, child_articles });
+        const article = data.data[0];
+        console.log('Fetched articles:', article);
 
         const articlesContainer = document.getElementById('articlesContainer');
         if (articlesContainer) {
-            // Afficher l'article parent suivi des articles enfants
-            articlesContainer.innerHTML = `
-                ${parent_article ? `
+            // Afficher l'article s'il existe
+            if (!article) {
+                articlesContainer.innerHTML = `
                     <div class="article">
-                        <h2>${parent_article.title}</h2>
-                        ${parent_article.description ? `<p>${parent_article.description}</p>` : ''}
-                        <div>${Array.isArray(parent_article.content)
-                            ? parent_article.content.map(item => item && item.body ? marked(item.body) : '').join('<br>')
-                            : 'No content available'}</div>
-                        ${parent_article.author ? `<p><strong>Auteur:</strong> ${parent_article.author.name}</p>` : ''}
-                        <p><strong>Date:</strong> ${new Date(parent_article.createdAt).toLocaleDateString('fr-FR', {
-                            day: '2-digit',
-                            month: '2-digit',
-                            year: 'numeric'
-                        })}</p>
+                        <h2>Article introuvable</h2>
+                        <p>L'article que vous cherchez n'existe pas.</p>
                     </div>
-                ` : ''}
-                ${child_articles.map(article => `
+                `;
+                return;
+            } else {
+                articlesContainer.innerHTML = `
                     <div class="article">
-                        <h2><a href="/nos-projets/${article.slug}/">${article.title}</a></h2>
+                        <h2>${article.title}</h2>
                         ${article.description ? `<p>${article.description}</p>` : ''}
+                        <div>${Array.isArray(article.content)
+                        ? article.content.map(item => item && item.body ? marked(item.body) : '').join('<br>')
+                        : 'No content available'}</div>
                         ${article.author ? `<p><strong>Auteur:</strong> ${article.author.name}</p>` : ''}
                         <p><strong>Date:</strong> ${new Date(article.createdAt).toLocaleDateString('fr-FR', {
                             day: '2-digit',
@@ -43,8 +43,8 @@ async function fetchArticles() {
                             year: 'numeric'
                         })}</p>
                     </div>
-                `).join('')}
-            `;
+                `
+            }
         } else {
             console.error('articlesContainer is null');
         }
