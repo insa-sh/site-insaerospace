@@ -29,9 +29,12 @@ def fetch_articles(request):
     slug = request.GET.get('slug')
     projet = request.GET.get('projet')
 
-    if slug:
+
+    if slug and projet:
+        url = f'http://127.0.0.1:1337/api/articles?populate=*&filters[slug][$eq]={slug}&filters[projet][slug][$eq]={projet}'
+    elif slug and not projet:
         url = f'http://127.0.0.1:1337/api/articles?populate=*&filters[slug][$eq]={slug}'
-    elif projet:
+    elif projet and not slug:
         url = f'http://127.0.0.1:1337/api/articles?populate=*&filters[projet][slug][$eq]={projet}&sort=publishedAt:asc'
         # url = f'http://127.0.0.1:1337/api/articles?populate=*'
     else:

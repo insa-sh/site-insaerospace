@@ -12,7 +12,7 @@ async function fetchArticles() {
         // par défaut, un / est rajouté en fin d'url donc le dernier element du tableau est ""
 
         // Modifier l'URL de la requête pour inclure le slug comme paramètre de requête
-        const response = await fetch(`/api/fetch_articles?slug=${articleSlug}`);
+        const response = await fetch(`/api/fetch_articles?slug=${articleSlug}&projet=${projectSlug}`);
         const data = await response.json();
         const article = data.data[0];
         console.log('Fetched articles:', article);
