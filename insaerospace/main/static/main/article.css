@@ -1,0 +1,270 @@
+/* style pour l'affichage des articles */
+
+
+#projectDetailContainer {
+
+    margin: 32px 4vw;
+    padding: 24px;
+    border-radius: 12px;
+    background : #322e2e39  linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.00) 44%, rgba(0, 0, 0, 0.60) 67%, #00000098 100%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    
+    min-height: min(400px, 40vh);
+
+
+
+
+
+
+    h1 {
+        font-family: 'Nasalization';
+        font-size: 42px;
+        font-weight: 900;
+        text-align: left;
+        margin-bottom: 8px;
+    }
+
+    p.date {
+        margin-top: 12px;
+        font-family: 'Raleway';
+        font-size: 18px;
+        font-weight: 400;
+    }
+    p.date>i {
+        padding-right: 4px;
+    }
+
+}
+
+
+/* pour la lise des projets */
+#projectsContainer {
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    margin: 32px 4vw;
+    gap: 16px;
+    color: #fff;
+
+    a.projet {
+        background: #00000052;
+        padding: 20px;
+        border-radius: 24px;
+        color: inherit;
+        text-decoration: none;
+
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        min-width: 250px;
+        min-height: 300px;
+        
+        transition: all var(--transition-duration) ease-in-out;
+
+    }
+
+    a.projec:hover {
+        background: #00000069;
+        transform: translateY(-4px);
+    }
+
+    h2 {
+        font-family: 'Raleway';
+        font-size: 18px;
+        font-weight: 800;
+        margin: 0;
+        margin-bottom: 8px;
+    }
+
+    p.description {
+        font-family: 'Raleway';
+        font-size: 16px;
+        font-weight: 400;
+        margin: 0;
+        margin-bottom: 16px;
+    }
+
+    p.date {
+        font-family: 'Raleway';
+        font-size: 16px;
+        font-weight: 400;
+        margin-top: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* pour les aperçus articles */
+#articlesContainer {
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    margin: 32px 4vw;
+    gap: 16px;
+    color: #fff;
+
+    >a.article {
+        background: #00000052;
+        padding: 20px;
+        border-radius: 24px;
+        color: inherit;
+        text-decoration: none;
+        
+        transition: all var(--transition-duration) ease-in-out;
+
+    }
+
+    a.article:hover {
+        background: #00000069;
+        transform: translateY(-4px);
+    }
+
+    h2 {
+        font-family: 'Raleway';
+        font-size: 18px;
+        font-weight: 800;
+        margin: 0;
+        margin-bottom: 8px;
+    }
+
+    p.description {
+        font-family: 'Raleway';
+        font-size: 16px;
+        font-weight: 400;
+        margin: 0;
+        margin-bottom: 16px;
+    }
+
+    p.date {
+        font-family: 'Raleway';
+        font-size: 16px;
+        font-weight: 400;
+        margin-top: 0;
+    }
+}
+
+#article-body {
+
+    h1 {
+        font-family: 'Raleway';
+        font-size: 32px;
+        font-weight: 800;
+        margin: 40px 0;
+    }
+
+    h2 {
+        font-family: 'Raleway';
+        font-size: 26px;
+        font-weight: 800;
+        margin: 26px;
+    }
+
+    h3 {
+        font-family: 'Raleway';
+        font-size: 24px;
+        font-weight: 700;
+        margin: 24px 0;
+    }
+
+    h4, h5, h6 {
+        font-family: 'Raleway';
+        font-size: 20px;
+        font-weight: 600;
+        margin: 16px 0;
+    }
+
+    p {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 1.3;
+        text-align: left;
+
+    }
+
+    img {
+        width: -webkit-fill-available;
+        max-width: 1000px;
+        text-align: center;
+
+        border: solid 1px lightgrey;
+        border-radius: 16px;
+
+        box-shadow: #ffdbdb6e 0px 0px 6px 1px; /* à vérifier */
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

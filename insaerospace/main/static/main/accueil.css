@@ -2,7 +2,12 @@
 
 
 /* Styles uniquement applicables à la page accueil.html */
-
+body {
+    background-color: #000;
+    color: #fff;
+    min-height: 120vh;
+    /* overflow-x: hidden; */
+}
 
 header {
     position: fixed;

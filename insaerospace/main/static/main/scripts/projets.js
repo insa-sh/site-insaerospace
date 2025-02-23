@@ -10,7 +10,7 @@ async function fetchProjects() {
         console.log('Fetched projets:', projets);
 
         if (Array.isArray(projets)) {
-            const articlesContainer = document.getElementById('articles-container');
+            const articlesContainer = document.getElementById('projectsContainer');
             articlesContainer.innerHTML = projets
                 .map(projet => {
                     const date = new Date(projet.createdAt);
@@ -24,12 +24,13 @@ async function fetchProjects() {
                     if (projet.miniature != null) {
                         miniature_url = projet.miniature.url;
                     }
+                    // style="background: url('${uploads_url + miniature_url}');" 
                     return `
-                        <div class="projet" style="background: url('${uploads_url + miniature_url}');">  
-                            <h2><a href="/nos-projets/${projet.slug}/">${projet.nom}</a></h2>
+                        <a class="projet" href="/nos-projets/${projet.slug}/">  
+                            <h2>${projet.nom}</h2>
                             ${projet.description ? `<p>${projet.description}</p>` : ''}
                             <p><strong>Date:</strong> ${formattedDate}</p>
-                        </div>
+                        </a>
                     `;
                 }).join('');
         } else {

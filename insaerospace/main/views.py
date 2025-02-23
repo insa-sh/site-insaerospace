@@ -15,7 +15,13 @@ def fetch_projets(request):
     headers = {
         'Authorization': f'Bearer {api_token}'
     }
-    response = requests.get('http://127.0.0.1:1337/api/projets?populate=*', headers=headers)
+
+    slug_projet = request.GET.get('slug')
+
+    if slug_projet:
+        response = requests.get(f'http://127.0.0.1:1337/api/projets?populate=*&filters[slug][$eq]={slug_projet}', headers=headers)
+    else:
+        response = requests.get('http://127.0.0.1:1337/api/projets?populate=*', headers=headers)
         
     if response.status_code == 200:
         return JsonResponse(response.json())

@@ -5,11 +5,12 @@
 
 
 {% block extrahead %}
+<link rel="stylesheet" href="{% static 'main/article.css' %}">
 {% endblock %}
 
 
 {% block content %}
-<div id="articles-container"></div>
+<div id="projectsContainer"></div>
 <script type="module" src="{% static 'main/scripts/projets.js' %}"></script>
 
 {% endblock %}

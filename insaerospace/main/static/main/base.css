@@ -19,7 +19,7 @@
 * {
     --red-insaerospace: #CC0D0B;
 
-    --transition-duration: 0.3s;
+    --transition-duration: 0.2s;
 
 
 
@@ -35,8 +35,8 @@
 }
 
 body {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #fff;
+    color: #000;
     min-height: 120vh;
     /* overflow-x: hidden; */
 }

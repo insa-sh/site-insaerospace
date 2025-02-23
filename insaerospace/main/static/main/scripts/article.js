@@ -17,7 +17,15 @@ async function fetchArticles() {
         const article = data.data[0];
         console.log('Fetched articles:', article);
 
-        const articlesContainer = document.getElementById('articlesContainer');
+        // définir le title de la page
+        if (article) {
+            document.title = `${article["title"] + " | INSAerospace" || articleSlug + " | INSAerospace" || 'Projet sans titre | INSAerospace'}`;
+        } else {
+            document.title = `${articleSlug + " | INSAerospace" || 'Article sans titre | INSAerospace'}`;
+        }
+
+
+        const articlesContainer = document.getElementById('singleArticleContainer');
         if (articlesContainer) {
             // Afficher l'article s'il existe
             if (!article) {
@@ -35,11 +43,11 @@ async function fetchArticles() {
                         ${article.description ? `<p>${article.description}</p>` : ''}
                         ${article.author ? `<p><strong>Auteur:</strong> ${article.author.name}</p>` : ''}
                         <p><strong>Date:</strong> ${new Date(article.createdAt).toLocaleDateString('fr-FR', {
-                            day: '2-digit',
-                            month: '2-digit',
-                            year: 'numeric'
-                        })}</p>
-                        <div>${Array.isArray(article.content)
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                })}</p>
+                        <div id='article-body'>${Array.isArray(article.content)
                         ? article.content.map(item => item && item.body ? marked(item.body) : '').join('<br>')
                         : 'No content available'}</div>
                     </div>
