@@ -136,7 +136,7 @@
     color: #fff;
 
     >a.article {
-        background: #00000052;
+        background: #000000;
         padding: 20px;
         border-radius: 24px;
         color: inherit;
@@ -147,7 +147,7 @@
     }
 
     a.article:hover {
-        background: #00000069;
+        background: #3e3e3e;
         transform: translateY(-4px);
     }
 
@@ -175,7 +175,65 @@
     }
 }
 
+
+
+
+/* pour le contenu des articles */
+
+
+div.article {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 5vw 40px;
+
+    >h1 {
+        font-family: 'Nasalization';
+        font-size: 42px;
+        font-weight: 900;
+        margin: 16px 0;
+        margin-bottom: 4px;
+    }
+    >p.date {
+        font-family: 'Raleway';
+        font-size: 20px;
+        font-weight: 500;
+        margin: 0;
+    }
+    >p.description {
+        font-family: 'Raleway';
+        font-size: 20px;
+        font-weight: 500;
+        margin:0;
+        font-style: italic;
+        margin-bottom: 4px;
+        color: grey;
+    }
+    >p.auteur {
+        font-family: 'Raleway';
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0;
+        color: grey;
+    }
+
+}
+
+
+
 #article-body {
+    
+    align-self: center;
+
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Raleway';
+    font-size: 18px;
+    margin-top: 40px;
+    
+
 
     h1 {
         font-family: 'Raleway';
@@ -188,7 +246,7 @@
         font-family: 'Raleway';
         font-size: 26px;
         font-weight: 800;
-        margin: 26px;
+        margin: 26px 0;
     }
 
     h3 {
@@ -206,23 +264,165 @@
     }
 
     p {
-        font-size: 18px;
+        font-size: inherit;
         font-weight: 400;
         line-height: 1.3;
         text-align: left;
+        margin: 8px 0;
 
     }
 
+
+    /* les p qui possèdent une image dedans (appliquer le style au p contenant une image) */
+    p:has(img) {
+        align-self: center;
+    }
+
     img {
+        margin: 20px 0;
         width: -webkit-fill-available;
-        max-width: 1000px;
-        text-align: center;
+        max-width: min(900px,60vw);
+        justify-self: center;
 
         border: solid 1px lightgrey;
         border-radius: 16px;
 
         box-shadow: #ffdbdb6e 0px 0px 6px 1px; /* à vérifier */
     }
+
+    /* chanegr le style des listes à puces pour remplacer les puces par des tirets moyens */
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 8px 0
+    }
+
+    ol {
+        padding-left: 16px;
+        margin: 8px 0;
+
+    }
+
+    ul>li, ol>li {
+        margin: 8px 0;
+        margin-left: 16px;
+
+    }
+
+    ul li::before {
+        content: "";
+        height: 4px;
+        width: 18px;
+        background-color: var(--red-insaerospace);
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 12px;
+    }
+
+    ol li::marker {
+        color: var(--red-insaerospace);
+        font-weight: 700;
+
+    }
+
+    /* pour les liens */
+    a {
+        color: var(--red-insaerospace);
+        text-decoration: none;
+        font-weight: 700;
+        transition: color 0.3s;
+    }
+
+    a:hover {
+        color: var(--red-insaerospace-hover);
+    }
+
+
+    /* blocquote */
+    blockquote {
+        margin: 16px 0;
+        padding: 16px;
+        border-left: 4px solid var(--red-insaerospace);
+        background: #ffffff;
+        border-radius: 8px;
+    }
+
+    blockquote>p {
+        font-style: italic;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    >hr {
+        border-style: solid;
+        border-color: lightgrey;
+        margin: 1px 0;
+    }
+
+
+    /* tableaux */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        /* border-radius: 6px;
+        border: 1px solid lightgrey; */
+
+    }
+
+    th, td {
+        border: 1px solid lightgrey;
+        padding: 8px;
+    }
+
+    th {
+        background-color: var(--red-insaerospace);
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    
+
+    /* bloc de code */
+    pre {
+        background-color: #4a4a4a;
+        color: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        margin: 16px 0;
+        overflow-x: auto;
+    }
+    
+    code {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 16px;
+    }
+
+
+
+
+    /* codes dans le texte */
+    p>code {
+        background-color: #4a4a4a;
+        color: #fff;
+        padding: 4px 6px;
+        border-radius: 8px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 16px;
+    }
+
+    
+    /* cases à cocher stylées */
+    
+
+
 
 
 

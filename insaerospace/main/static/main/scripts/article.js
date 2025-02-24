@@ -31,7 +31,7 @@ async function fetchArticles() {
             if (!article) {
                 articlesContainer.innerHTML = `
                     <div class="article">
-                        <h2>Article introuvable</h2>
+                        <h1>Article introuvable</h1>
                         <p>L'article que vous cherchez n'existe pas.</p>
                     </div>
                 `;
@@ -39,10 +39,10 @@ async function fetchArticles() {
             } else {
                 articlesContainer.innerHTML = `
                     <div class="article">
-                        <h2>${article.title}</h2>
-                        ${article.description ? `<p>${article.description}</p>` : ''}
-                        ${article.author ? `<p><strong>Auteur:</strong> ${article.author.name}</p>` : ''}
-                        <p><strong>Date:</strong> ${new Date(article.createdAt).toLocaleDateString('fr-FR', {
+                        <h1>${article.title}</h1>
+                        ${article.description ? `<p class="description">${article.description}</p>` : ''}
+                        ${article.author ? `<p class="auteur">${article.author.name}</p>` : ''}
+                        <p class="date">${new Date(article.createdAt).toLocaleDateString('fr-FR', {
                     day: '2-digit',
                     month: '2-digit',
                     year: 'numeric'
