@@ -39,14 +39,16 @@ async function fetchArticles() {
             } else {
                 articlesContainer.innerHTML = `
                     <div class="article">
+                        <div class="article-data">
                         <h1>${article.title}</h1>
                         ${article.description ? `<p class="description">${article.description}</p>` : ''}
                         ${article.author ? `<p class="auteur">${article.author.name}</p>` : ''}
-                        <p class="date">${new Date(article.createdAt).toLocaleDateString('fr-FR', {
+                        <p class="date"><i class="fa-solid fa-clock"></i>  ${new Date(article.createdAt).toLocaleDateString('fr-FR', {
                     day: '2-digit',
                     month: '2-digit',
                     year: 'numeric'
                 })}</p>
+                        </div>
                         <div id='article-body'>${Array.isArray(article.content)
                         ? article.content.map(item => item && item.body ? marked(item.body) : '').join('<br>')
                         : 'No content available'}</div>

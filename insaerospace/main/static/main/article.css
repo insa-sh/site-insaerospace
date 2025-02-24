@@ -187,34 +187,57 @@ div.article {
     flex-wrap: nowrap;
     margin: 5vw 40px;
 
-    >h1 {
+
+    div.article-data {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-bottom: 40px;
+
+        /* background: #322e2e39  linear-gradient(180deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.3) 44%, rgba(0, 0, 0, 0.60) 67%, #00000098 100%); */
+        background-color: #000;
+        padding: 24px;
+        border-radius: 12px;
+        color: #fff;
+    }
+
+    div.article-data>h1 {
         font-family: 'Nasalization';
         font-size: 42px;
         font-weight: 900;
         margin: 16px 0;
         margin-bottom: 4px;
     }
-    >p.date {
+    div.article-data>p.date {
         font-family: 'Raleway';
         font-size: 20px;
         font-weight: 500;
         margin: 0;
+
+        margin-top: 26px;
     }
-    >p.description {
+
+    div.article-data>p.date>i {
+        padding-right: 8px;
+    }
+
+
+    div.article-data>p.description {
         font-family: 'Raleway';
         font-size: 20px;
         font-weight: 500;
         margin:0;
         font-style: italic;
         margin-bottom: 4px;
-        color: grey;
+        color: lightgrey;
     }
-    >p.auteur {
+    div.article-data>p.auteur {
         font-family: 'Raleway';
         font-size: 20px;
         font-weight: 600;
         margin: 0;
-        color: grey;
+        color: lightgrey;
     }
 
 }
