@@ -15,11 +15,6 @@ async function fetchProjects() {
                 .map(projet => {
                     const date = new Date(projet.createdAt);
                     console.log(projet.miniature);
-                    const formattedDate = date.toLocaleDateString('fr-FR', {
-                        day: '2-digit',
-                        month: '2-digit',
-                        year: 'numeric'
-                    });
                     let miniature_url = "";
                     if (projet.miniature != null) {
                         miniature_url = projet.miniature.url;
@@ -28,8 +23,7 @@ async function fetchProjects() {
                     return `
                         <a class="projet" href="/nos-projets/${projet.slug}/">  
                             <h2>${projet.nom}</h2>
-                            ${projet.description ? `<p>${projet.description}</p>` : ''}
-                            <p><strong>Date:</strong> ${formattedDate}</p>
+                            ${projet.description ? `<p class="description">${projet.description}</p>` : ''}
                         </a>
                     `;
                 }).join('');

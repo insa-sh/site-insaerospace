@@ -45,6 +45,7 @@
 #projectsContainer {
 
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     align-items: stretch;
     justify-content: center;
@@ -63,14 +64,15 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        min-width: 250px;
-        min-height: 300px;
+        min-width: min(250px, 80vw);
+        max-width: 300px;
+        min-height: 400px;
         
         transition: all var(--transition-duration) ease-in-out;
 
     }
 
-    a.projec:hover {
+    a.projet:hover {
         background: #00000069;
         transform: translateY(-4px);
     }
@@ -88,7 +90,16 @@
         font-size: 16px;
         font-weight: 400;
         margin: 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-duration) ease-in-out, opacity var(--transition-duration) ease-in-out, margin-bottom var(--transition-duration) ease-in-out;
+    }
+
+    a:hover > p.description {
         margin-bottom: 16px;
+        max-height: 100px; /* high enough to accommodate any content */
+        opacity: 1;
     }
 
     p.date {
