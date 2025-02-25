@@ -1,4 +1,4 @@
-const uploads_url = "http://localhost:1337/api/upload/";
+const uploads_url = "http://localhost:1337";
 async function fetchProjects() {
     try {
         // Modifier l'URL de la requête pour inclure un paramètre de requête pour les projets 
@@ -19,9 +19,10 @@ async function fetchProjects() {
                     if (projet.miniature != null) {
                         miniature_url = projet.miniature.url;
                     }
-                    // style="background: url('${uploads_url + miniature_url}');" 
+                     
                     return `
-                        <a class="projet" href="/nos-projets/${projet.slug}/">  
+                        <a class="projet" href="/nos-projets/${projet.slug}/" 
+                           style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.60) 100%), url('${uploads_url + miniature_url}'); background-size: cover; background-position: center;">  
                             <h2>${projet.nom}</h2>
                             ${projet.description ? `<p class="description">${projet.description}</p>` : ''}
                         </a>

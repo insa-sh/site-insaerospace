@@ -54,7 +54,9 @@
     color: #fff;
 
     a.projet {
-        background: #00000052;
+        background-color: #242424;
+        background-size: cover;
+        background-position: center;
         padding: 20px;
         border-radius: 24px;
         color: inherit;
@@ -73,7 +75,7 @@
     }
 
     a.projet:hover {
-        background: #00000069;
+        background-color: #2f2f2f;
         transform: translateY(-4px);
     }
 
