@@ -6,7 +6,9 @@
     margin: 32px 4vw;
     padding: 24px;
     border-radius: 12px;
-    background : #322e2e39  linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.00) 44%, rgba(0, 0, 0, 0.60) 67%, #00000098 100%);
+    background : #242424;
+    background-size: cover;
+    background-position: center;
     color: white;
     display: flex;
     flex-direction: column;
@@ -138,7 +140,9 @@
     color: #fff;
 
     >a.article {
-        background: #000000;
+        background-color: #000000;
+        background-size: cover;
+        background-position: center;
         padding: 20px;
         border-radius: 24px;
         color: inherit;
@@ -149,7 +153,7 @@
     }
 
     a.article:hover {
-        background: #3e3e3e;
+        background-color: #3e3e3e;
         transform: translateY(-4px);
     }
 

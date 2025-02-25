@@ -18,7 +18,7 @@ async function fetchProjects() {
                     let style_miniature_projet = "";
                     if (projet.miniature != null) {
                         let miniature_url = projet.miniature.url;
-                        style_miniature_projet = `background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${uploads_url + miniature_url}'); background-size: cover; background-position: center;`;
+                        style_miniature_projet = `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${uploads_url + miniature_url}'); background-size: cover; background-position: center;`;
                     }
                      
                     return `

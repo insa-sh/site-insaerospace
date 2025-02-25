@@ -45,7 +45,6 @@ async function fetchArticles() {
         if (projectDetailContainer) {
             // on utilise le premier article de la liste pour g
             console.log("project details generating")
-            // projectDetailContainer.style.background = "url(${projet["miniature"]["url"]})"; // for later
 
 
             // date: si le dernier article remonte à plus d'un an, alors on affiche date 1er article - date dernier article
@@ -63,15 +62,11 @@ async function fetchArticles() {
             }
 
             // arrière plan - miniature du projet
-            let style_miniature_projet = "";
             if (projet.miniature != null) {
                 let miniature_url = uploads_url + projet.miniature.url;
-                // style_miniature_projet = `background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${uploads_url + miniature_url}'); background-size: cover; background-position: center;`;
 
                 // Mise à jour du style de background avec l'URL correcte de la miniature
-                projectDetailContainer.style.background = `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${miniature_url}')`;
-                // projectDetailContainer.style.backgroundSize = 'cover';
-                // projectDetailContainer.style.backgroundPosition = 'center';
+                projectDetailContainer.style.backgroundImage = `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${miniature_url}')`;
                 console.log("miniature url", miniature_url)
             }
 
@@ -90,11 +85,11 @@ async function fetchArticles() {
                 let style_minature = "";
                 if (article.cover != null) {
                     let miniature_url = uploads_url + article.cover.url;
-                    style_minature = `linear-gradient(-90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.70) 100%), url('${miniature_url}'); background-size: cover; background-position: center;`
+                    style_minature = `background-image: linear-gradient(-90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.70) 100%), url('${miniature_url}');`
                 }
                 return `
                     <a class="article" href="/nos-projets/${projectSlug}/${article.slug}/" 
-                        style="background: ${style_minature};">
+                        style="${style_minature};">
 
                         <h2>${article.title || 'Sans titre'}</h2>
                         ${article.description ? `<p class="description">${article.description}</p>` : ''}
