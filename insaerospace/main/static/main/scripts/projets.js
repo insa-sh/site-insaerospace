@@ -15,14 +15,15 @@ async function fetchProjects() {
                 .map(projet => {
                     const date = new Date(projet.createdAt);
                     console.log(projet.miniature);
-                    let miniature_url = "";
+                    let style_miniature_projet = "";
                     if (projet.miniature != null) {
-                        miniature_url = projet.miniature.url;
+                        let miniature_url = projet.miniature.url;
+                        style_miniature_projet = `background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${uploads_url + miniature_url}'); background-size: cover; background-position: center;`;
                     }
                      
                     return `
                         <a class="projet" href="/nos-projets/${projet.slug}/" 
-                           style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.60) 100%), url('${uploads_url + miniature_url}'); background-size: cover; background-position: center;">  
+                           style="${style_miniature_projet}">  
                             <h2>${projet.nom}</h2>
                             ${projet.description ? `<p class="description">${projet.description}</p>` : ''}
                         </a>

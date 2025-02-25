@@ -54,27 +54,6 @@ def fetch_articles(request):
     return JsonResponse(response.json())
 
 
-# récupérer les uploads de strapi et les renvoyer
-@require_GET
-def fetch_upload(request):
-    api_token = os.getenv('API_TOKEN')
-    headers = {'Authorization': f'Bearer {api_token}'}
-    file_id = request.GET.get('id')
-
-    if file_id:
-        url = f'http://127.0.0.1:1337/api/upload/files/{file_id}?populate=*'
-    else:
-        url = 'http://127.0.0.1:1337/api/upload/files/'
-
-    response = requests.get(url, headers=headers)
-    if response.status_code != 200:
-        return JsonResponse({'error': 'Error fetching upload'}, status=500)
-
-    return JsonResponse(response)
-    
-
-
-
     
 
 
@@ -95,6 +74,3 @@ def project_detail(request, slug_project):
 
 def nosMembres(request):
     return render(request, 'main/nos-membres.html')
-
-def test(request):
-    return render(request, 'main/test.html')

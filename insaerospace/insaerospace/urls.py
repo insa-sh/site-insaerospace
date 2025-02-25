@@ -27,6 +27,4 @@ urlpatterns = [
     path('api/fetch_articles/', views.fetch_articles, name='fetch_articles'),
     path('nos-projets/<slug:slug_project>/<slug:slug_article>/', views.article_detail, name='article_detail'),
     path('nos-projets/<slug:slug_project>/', views.project_detail, name='project_detail'),
-    path('test/', views.test, name='test'),
-    path('api/fetch_upload/', views.fetch_upload, name='fetch_upload'),
 ]
