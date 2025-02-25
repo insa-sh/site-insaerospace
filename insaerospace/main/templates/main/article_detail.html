@@ -1,0 +1,13 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Article Details{% endblock %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'main/article.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="singleArticleContainer"></div>
+<script type="module" src="{% static 'main/scripts/article.js' %}"></script>
+{% endblock %}

@@ -18,8 +18,9 @@
 
 * {
     --red-insaerospace: #CC0D0B;
-
-    --transition-duration: 0.3s;
+    --red-insaerospace-hover: #A00A09;
+    
+    --transition-duration: 0.2s;
 
 
 
@@ -35,10 +36,11 @@
 }
 
 body {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #f2f2f2;
+    color: #000;
     min-height: 120vh;
     /* overflow-x: hidden; */
+    padding-top: 130px;
 }
 
 a {
@@ -84,21 +86,30 @@ header {
     height: 110px;
     /* background-color: #ffffff; */
     color: #000000;
-    position: -webkit-sticky;
-    position: sticky;
+    /* position: -webkit-sticky; */
+    /* position: sticky; */
     top: 0;
     z-index: 1000;
     right: 0;
     left: 0;
-    /* overflow: hidden; */
+
+    /* overflow-x: hidden; */
 
     font-family: "Raleway";
 
     /* transition: border-radius 0.5s, height 0.5s, background-color 0.5s, padding 0.5s; */
     transition: all var(--transition-duration);
 
+
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+
 }
 
+/* pour le dégradé du header */
 header::before {
     content: "";
     position: absolute;
@@ -113,7 +124,7 @@ header::before {
     transform: translate(-50%, 0);
     border-bottom-right-radius: 40%;
     border-bottom-left-radius: 40%;
-
+    
     transition: border-radius 0.5s, height 0.5s, background-color 0.5s;
 
 }
@@ -195,6 +206,7 @@ footer {
     padding-top: 20px;
     padding-bottom: 20px;
     gap: 12px;
+    color: #fff;
 }
 
 .insaerospace {
