@@ -508,3 +508,15 @@ div.article {
 
 
 }
+
+
+
+
+.messageErreur {
+    text-align:center;
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+    padding: 20px;
+}
