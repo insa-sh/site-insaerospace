@@ -17,6 +17,7 @@ function fetchProjects() {
                     return;
                 }
 
+
                 if (Array.isArray(projets)) {
                     articlesContainer.innerHTML = projets
                         .map(projet => {
@@ -41,6 +42,7 @@ function fetchProjects() {
             .catch(error => {
                 console.error('Error fetching projets:', error);
             });
+
     } catch (error) {
         console.error('Error fetching projets:', error);
     }
