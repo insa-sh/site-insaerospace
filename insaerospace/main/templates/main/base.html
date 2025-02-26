@@ -5,10 +5,10 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>{% block title %}{% endblock %} | INSAEROSPACE</title>
+        <title>{% block title %}{% endblock %} | {{ site_name }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{% static 'main/base.css' %}">
-        <link rel="shortcut icon" href="{% static 'images/logo/favicon.svg' %}" type="image/x-svgk,lmù">
+        <link rel="shortcut icon" href="{{ favicon }}" type="image/svg+xml">
 
         <!-- icons -->
         <script src="https://kit.fontawesome.com/51918b7d55.js" crossorigin="anonymous"></script>
