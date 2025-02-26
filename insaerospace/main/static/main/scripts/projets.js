@@ -25,7 +25,7 @@ function fetchProjects() {
                             console.log(projet.miniature);
                             let style_miniature_projet = "";
                             if (projet.miniature != null) {
-                                let miniature_url = projet.miniature.url;
+                                let miniature_url = projet.miniature.formats.large.url;
                                 style_miniature_projet = `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${uploads_url + miniature_url}');`;
                             }
                              
