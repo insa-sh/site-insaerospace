@@ -54,6 +54,28 @@ def fetch_articles(request):
     return JsonResponse(response.json())
 
 
+@require_GET
+def fetch_membres(request):
+    api_token = os.getenv('API_TOKEN')
+    headers = {
+        'Authorization': f'Bearer {api_token}'
+    }
+
+    slug_membre = request.GET.get('slug')
+
+    if slug_membre:
+        response = requests.get(f'http://127.0.0.1:1337/api/membres?populate=*&filters[slug][$eq]={slug_membre}', headers=headers)
+    else:
+        response = requests.get('http://127.0.0.1:1337/api/membres?populate=*', headers=headers)
+    
+    if response.status_code == 200:
+        return JsonResponse(response.json())
+    else:
+        return JsonResponse({'error': 'Error fetching membres'}, status=500)
+    
+
+
+
     
 
 
