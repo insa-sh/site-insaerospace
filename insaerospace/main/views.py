@@ -54,7 +54,6 @@ def fetch_articles(request):
     return JsonResponse(response.json())
 
 
-
     
 
 

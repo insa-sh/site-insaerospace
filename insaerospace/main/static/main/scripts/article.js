@@ -1,5 +1,8 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
+const uploads_url = "http://localhost:1337";
+
+
 async function fetchArticles() {
     try {
         // Récupérer le slug de l'URL
@@ -37,9 +40,18 @@ async function fetchArticles() {
                 `;
                 return;
             } else {
+                // miniature background
+                let style_minature = "";
+                if (article.cover != null) {
+                    let miniature_url = uploads_url + article.cover.url;
+                    style_minature = `background: linear-gradient(-90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.70) 100%), url('${miniature_url}'); background-size: cover; background-position: center;`
+                    console.log (style_minature)
+                 
+                }
+
                 articlesContainer.innerHTML = `
-                    <div class="article">
-                        <div class="article-data">
+                    <div class="article" >
+                        <div class="article-data" style="${style_minature}">
                         <h1>${article.title}</h1>
                         ${article.description ? `<p class="description">${article.description}</p>` : ''}
                         ${article.author ? `<p class="auteur">${article.author.name}</p>` : ''}

@@ -6,7 +6,9 @@
     margin: 32px 4vw;
     padding: 24px;
     border-radius: 12px;
-    background : #322e2e39  linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.00) 44%, rgba(0, 0, 0, 0.60) 67%, #00000098 100%);
+    background : #242424;
+    background-size: cover;
+    background-position: center;
     color: white;
     display: flex;
     flex-direction: column;
@@ -54,7 +56,9 @@
     color: #fff;
 
     a.projet {
-        background: #00000052;
+        background-color: #242424;
+        background-size: cover;
+        background-position: center;
         padding: 20px;
         border-radius: 24px;
         color: inherit;
@@ -73,7 +77,7 @@
     }
 
     a.projet:hover {
-        background: #00000069;
+        background-color: #2f2f2f;
         transform: translateY(-4px);
     }
 
@@ -136,7 +140,9 @@
     color: #fff;
 
     >a.article {
-        background: #000000;
+        background-color: #000000;
+        background-size: cover;
+        background-position: center;
         padding: 20px;
         border-radius: 24px;
         color: inherit;
@@ -147,7 +153,7 @@
     }
 
     a.article:hover {
-        background: #3e3e3e;
+        background-color: #3e3e3e;
         transform: translateY(-4px);
     }
 
@@ -501,4 +507,16 @@ div.article {
 
 
 
+}
+
+
+
+
+.messageErreur {
+    text-align:center;
+    font-family: 'Raleway';
+    font-size: 18px;
+    font-weight: 500;
+    color: #000000;
+    padding: 20px;
 }
