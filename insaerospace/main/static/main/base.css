@@ -4,12 +4,23 @@
 /* Raleway */
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* Braah One */
+@import url('https://fonts.googleapis.com/css2?family=Braah+One&display=swap');
+
+/* Caveat */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+
+
+
 /* Nasalization */
 /* import local font */
 @font-face {
     font-family: 'Nasalization';
     src: url('/static/fonts/nasalization-rg.otf') format('opentype');
 }
+
+
 
 
 
@@ -59,9 +70,27 @@ p {
 h1,h2 {
     color: inherit;
     font-family: "Nasalization";
-    font-size: 24px;
-    font-weight: 600;
+    /* font-size: 24px; */
+    /* font-weight: 600; */
 }
+
+h1 {
+    font-size: 36px;
+    font-weight: 800;
+
+    margin: 20px 0;
+}
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+
+    margin: 16px 0;
+}
+
+.classic-page-margin {
+    margin: 0 4vw;
+}
+
 
 
 
@@ -69,7 +98,9 @@ h1,h2 {
 
 /* GLOBAL ELEMENTS */
 
-
+main {
+    min-height: calc(100vh - 80px);
+}
 
 header>*, header>*>* {
     transition: all var(--transition-duration);

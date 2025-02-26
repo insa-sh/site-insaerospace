@@ -16,6 +16,26 @@ const api_url = "http://localhost:1337";
 
 function fetchMembres() {
     try {
+
+        // fonction permettant de récupérer l'url de l'emoji de l'animation en fonction du slug du rôle si l'emoji n'est pas null
+        // à partir des requetes déjà effectuées
+        function getEmojiAnimationUrl(roles,role_slug) {
+            const role = roles.find(role => role.slug === role_slug);
+            if (role && role.emoji_animation) {
+                if (role.emoji_animation.formats.thumbnail.url) {
+                    return api_url + role.emoji_animation.formats.thumbnail.url;
+                } else {
+                    return api_url + role.emoji_animation.url;
+                }
+                
+            }
+            return null;
+        }
+
+
+
+
+
         // Récupérer les pôles, les rôles et les membres
         const polesResponse = fetch(`/api/fetch_poles`);
         const rolesResponse = fetch(`/api/fetch_roles`);
@@ -87,18 +107,26 @@ function fetchMembres() {
 
                     console.log('Membres du pôle triés:', membresDuPole);
 
+
                     return `
                         <div class="pole">
                             <h2>${pole.nom_pole}</h2>
+                            <div class="membres">
                             ${membresDuPole.map(membre => `
                                 <div class="membre">
-                                    <img src="${membre.photo_de_profil ? api_url + membre.photo_de_profil.url : 'default_profile_picture_url'}" alt="${membre.nom}">
+                                    <div class="photo-de-profil">
+                                    <img src="${membre.photo_de_profil ? api_url + membre.photo_de_profil.url : 'http://localhost:1337/uploads/default_pp_a375f13862.png'}" alt="${membre.nom}">
+                                    ${membre.role && membre.role.slug !== 'membre' && getEmojiAnimationUrl(roles, membre.role.slug) != null ? '<div class="emoji-box" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji1" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji2" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji3" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji4" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji5" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/></div>' : ''}
+                                    </div>
                                     <h3>${membre.nom}</h3>
-                                    <p>${roles.find(role => role.slug === membre.role.slug).titre}</p>
-                                    ${membre.pseudo_insta ? `<a href="https://instagram.com/${membre.pseudo_insta}">Instagram</a>` : ''}
-                                    ${membre.pseudo_linkedin ? `<a href="https://linkedin.com/in/${membre.pseudo_linkedin}">LinkedIn</a>` : ''}
+                                    <p class="role">${roles.find(role => role.slug === membre.role.slug).titre}</p>
+                                    ${membre.pseudo_insta || membre.pseudo_linkedin ? '<div class="reseaux">' : ''}
+                                    ${membre.pseudo_insta ? `<a href="https://instagram.com/${membre.pseudo_insta}" target="_blank"><i class="fa-brands fa-instagram reseau-icon"></i></a>` : ''}
+                                    ${membre.pseudo_linkedin ? `<a href="https://linkedin.com/in/${membre.pseudo_linkedin}" target="_blank"><i class="fa-brands fa-linkedin reseau-icon"></i></a>` : ''}
+                                    ${membre.pseudo_insta || membre.pseudo_linkedin ? '</div>' : ''}
                                 </div>
                             `).join('')}
+                            </div>
                         </div>
                     `;
                 }).join('');

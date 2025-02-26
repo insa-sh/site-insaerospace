@@ -1,0 +1,160 @@
+
+h1 {
+    text-align: center;
+}
+
+div.pole>h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 32px 0;
+}
+
+div.pole>div.membres {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* margin: 0 4vw; */
+    gap: 16px;
+
+
+}
+
+div.membres>div.membre {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 250px;
+
+    >h3 {
+        font-family: 'Braah One';
+        font-size: 24px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    >p.role {
+        font-family: 'Caveat';
+        font-size: 24px;
+        /* font-weight: 400; */
+        margin: 0;
+    }
+
+    div.reseaux {
+        display: flex;
+        gap: 16px;
+        margin-top: 4px;
+        >a {
+            font-size: 24px;
+            color: black;
+            text-decoration: none;
+            transition: all 0.3s;
+            &:hover {
+                color: var(--red-insaerospace);
+            }
+        }
+    }
+
+    >div.photo-de-profil {
+        width: 200px;
+        height: 200px;
+        /* border-radius: 100px; */
+        overflow: visible;
+        position: relative;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+    }
+    >div>img {
+        width: 180px;
+        height: 180px;
+        bottom: 0;
+
+        border-radius: 100px;
+        object-fit: cover;
+        /* position: relative; */
+    }
+
+    /* Create a pseudo-element for the red circle, positioned at the bottom at first */
+    >div.photo-de-profil::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        width: calc(200px / 1.5);
+        height: calc(200px / 1.5);
+        background-color: var(--red-insaerospace);
+        border-radius: 50%;
+        transition: all var(--transition-duration, 0.5s) ease-in-out;
+        z-index: -2;
+    }
+
+    /* On hover, smoothly expand the red circle and center it */
+    &:hover>div.photo-de-profil::before {
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+    }
+
+    /* emojis et animations */
+    >div.photo-de-profil>div.emoji-box {
+        >img {
+            position: absolute;
+            /* positionner au milieu de la div */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* Remove or set transform-origin to center */
+            transform-origin: 50% 50%;
+    
+            width: 50px;
+            height: 50px;
+            opacity: 0;
+            transition: all var(--transition-duration, 0.5s) ease-in-out ;
+            z-index: -1;
+            
+        }
+        >img.emoji1 {
+            /* top: 0;
+            left: 0; */
+            transform: rotate(-60deg);
+            /* centre de rotation */
+        }
+        
+    }
+    &:hover>div.photo-de-profil>div.emoji-box>img {
+        opacity: 1;
+    }
+
+    
+    &:hover>div.photo-de-profil>div.emoji-box>img.emoji1 {
+        transform: rotate(-80deg);
+        top: 60px;
+        left: -15px;
+        
+    }
+    &:hover>div.photo-de-profil>div.emoji-box>img.emoji2 {
+        transform: rotate(-45deg);
+        top: -30px;
+        left: -15px;
+    }
+    &:hover>div.photo-de-profil>div.emoji-box>img.emoji3 {
+        transform: rotate(-10deg);
+        top: -30px;
+        left: 55px;
+    }
+    &:hover>div.photo-de-profil>div.emoji-box>img.emoji4 {
+        transform: rotate(45deg);
+        top: -5px;
+        left: 130px;
+    }
+    &:hover>div.photo-de-profil>div.emoji-box>img.emoji5 {
+        transform: rotate(70deg);
+        top: 55px;
+        left: 150px;
+    }
+
+}
