@@ -16,19 +16,26 @@ def fetch_caroussel(request):
 
     response = requests.get('http://127.0.0.1:1337/api/caroussels?populate=*', headers=headers)
     if response.status_code == 200:
-        data = response.json()
-        images = []
-        if "data" in data:
-            for item in data["data"]:
-                item_images = item.get("Images", [])
-                for img in item_images:
-                    images.append({
-                        'name': img['name'],
-                        'url': f"http://localhost:1337{img['formats']['large']['url']}"
-                    })
-        return JsonResponse({'images': images})
+        try:
+            data = response.json()
+            images = []
+            if "data" in data:
+                for item in data["data"]:
+                    item_images = item.get("Images", [])
+                    for img in item_images:
+                        images.append({
+                            'name': img['name'],
+                            'url': f"http://localhost:1337{img['formats']['large']['url']}"
+                        })
+            return JsonResponse({'images': images})
+        except ValueError as e:
+            print(f"Error parsing JSON: {e}")
+            print(f"Response content: {response.content}")
+            return JsonResponse({'error': 'Error parsing JSON response'}, status=500)
     else:
-        return JsonResponse({'error': 'Error fetching caroussel'}, status=500)
+        print(f"Error fetching caroussel: {response.status_code}")
+        print(f"Response content: {response.content}")
+        return JsonResponse({'error': 'Error fetching caroussel'}, status=response.status_code)
 
 
 # Récupérer les projets
