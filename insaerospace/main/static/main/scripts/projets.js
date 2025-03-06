@@ -1,4 +1,4 @@
-const uploads_url = "http://localhost:1337/api/upload/";
+const uploads_url = "http://localhost:1337";
 
 function fetchProjects() {
     try {
@@ -17,18 +17,21 @@ function fetchProjects() {
                     return;
                 }
 
+
                 if (Array.isArray(projets)) {
                     articlesContainer.innerHTML = projets
                         .map(projet => {
                             const date = new Date(projet.createdAt);
                             console.log(projet.miniature);
-                            let miniature_url = "";
+                            let style_miniature_projet = "";
                             if (projet.miniature != null) {
-                                miniature_url = projet.miniature.url;
+                                let miniature_url = projet.miniature.url;
+                                style_miniature_projet = `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${uploads_url + miniature_url}');`;
                             }
-                            // style="background: url('${uploads_url + miniature_url}');" 
+                             
                             return `
-                                <a class="projet" href="/nos-projets/${projet.slug}/">  
+                                <a class="projet" href="/nos-projets/${projet.slug}/" 
+                                   style="${style_miniature_projet}">  
                                     <h2>${projet.nom}</h2>
                                     ${projet.description ? `<p class="description">${projet.description}</p>` : ''}
                                 </a>
@@ -41,6 +44,7 @@ function fetchProjects() {
             .catch(error => {
                 console.error('Error fetching projets:', error);
             });
+
     } catch (error) {
         console.error('Error fetching projets:', error);
     }
