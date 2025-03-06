@@ -51,7 +51,7 @@ async function fetchArticles() {
                         </div>
                         <div id='article-body'>${Array.isArray(article.content)
                         ? article.content.map(item => item && item.body ? marked(item.body) : '').join('<br>')
-                        : 'No content available'}</div>
+                        : 'Contenu indisponible'}</div>
                     </div>
                 `
             }
