@@ -7,32 +7,28 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+@require_GET
+def fetch_caroussel(request):
+    api_token = os.getenv('API_TOKEN')
+    headers = {
+        'Authorization': f'Bearer {api_token}'
+    }
 
-# def get_site_info(request):
-#     site_name = request.COOKIES.get("site_name")
-#     favicon = request.COOKIES.get("favicon")
-
-#     if site_name and favicon:
-#         return JsonResponse({"site_name": site_name, "favicon": favicon})
-
-#     api_token = os.getenv('API_TOKEN')
-#     headers = {
-#         'Authorization': f'Bearer {api_token}'
-#     }
-#     response = requests.get("http://localhost:1337/api/global", headers=headers)
-#     if response.status_code == 200:
-#         data = response.json()
-#         print(data)  # Print the content of the data variable for debugging
-
-#         site_name = data.get("site_name", "Nom du site par défaut")
-#         favicon = data.get("favicon", "")
-
-#         response = JsonResponse({"site_name": site_name, "favicon": favicon})
-#         response.set_cookie("site_name", site_name, max_age=86400)  # Expires in 1 day
-#         response.set_cookie("favicon", favicon, max_age=86400)
-#         return response
-
-#     return JsonResponse({"error": "Impossible de récupérer les données"}, status=500)
+    response = requests.get('http://127.0.0.1:1337/api/caroussels?populate=*', headers=headers)
+    if response.status_code == 200:
+        data = response.json()
+        images = []
+        if "data" in data:
+            for item in data["data"]:
+                item_images = item.get("Images", [])
+                for img in item_images:
+                    images.append({
+                        'name': img['name'],
+                        'url': f"http://localhost:1337{img['formats']['large']['url']}"
+                    })
+        return JsonResponse({'images': images})
+    else:
+        return JsonResponse({'error': 'Error fetching caroussel'}, status=500)
 
 
 # Récupérer les projets
