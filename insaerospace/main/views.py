@@ -25,7 +25,7 @@ def fetch_caroussel(request):
                     for img in item_images:
                         images.append({
                             'name': img['name'],
-                            'url': f"http://localhost:1337{img['formats']['large']['url']}"
+                            'url': f"http://localhost:1337{img['url']}"
                         })
             return JsonResponse({'images': images})
         except ValueError as e:

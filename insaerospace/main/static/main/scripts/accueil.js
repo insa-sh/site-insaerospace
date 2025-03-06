@@ -53,7 +53,7 @@ function addAutoScroll() {
 
 // Fetch images from the API and add them to the carousel
 function loadCarousselImages() {
-    fetch('api/fetch_caroussel/')
+    fetch('api/fetch_caroussel')
         .then(response => response.json())
         .then(data => {
             const carousselContainer = document.getElementById('caroussel-container');
