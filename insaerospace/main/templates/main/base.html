@@ -5,10 +5,10 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>{% block title %}{% endblock %} | INSAEROSPACE</title>
+        <title>{% block title %}{% endblock %} | {{ site_name }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="{% static 'main/base.css' %}">
-        <link rel="shortcut icon" href="{% static 'images/logo/favicon.svg' %}" type="image/x-svgk,lmù">
+        <link rel="shortcut icon" href="{{ favicon }}" type="image/svg+xml">
 
         <!-- icons -->
         <script src="https://kit.fontawesome.com/51918b7d55.js" crossorigin="anonymous"></script>
@@ -21,10 +21,6 @@
 
     <body>
         <header>
-            <!-- <svg id="header-bg"  viewBox="0 0 1512 151" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                <path d="M0 0H1512V100.628C1512 100.628 1052.63 126.447 758 126.5C461.81 126.554 0 100.628 0 100.628V0Z" fill="white"/>
-            </svg> -->
-                
             <div id="header-site-name">
                 <img src="{% static '/images/logo/logo-insaerospace.svg' %}" alt="Logo INSAerospace">
                 <a href="/"><span class="logo-red-part">INSA</span>erospace</a>
@@ -41,7 +37,6 @@
 
         <main>
         {% block content %}
-
         {% endblock %}
         </main>
 
@@ -58,8 +53,5 @@
             </div>
             <p class="insash">Tous droits réservés - © INSAerospace 2024 - Site réalisé avec ❤️ par ./insa.sh, le Club Info de l’INSA Hauts-de-France</p>
         </footer>
-        
-
     </body>
-
 </html>
