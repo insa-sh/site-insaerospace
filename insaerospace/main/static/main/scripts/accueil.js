@@ -3,12 +3,7 @@ function scrollToNext() {
     var container = document.querySelector('.caroussel');
     var current = container.scrollLeft;
 
-    // console.log("current = "+current);
-    // console.log("next = current + window.innerWidth = " + (current + document.body.clientWidth) + " = " + current + "+ " + document.body.clientWidth);
-
     var next = current + document.body.clientWidth;
-
-    // console.log("On continue si next < container.scrollWidth - window.innerWidth : \n"+(container.scrollWidth - document.body.clientWidth)+"= "+container.scrollWidth+" - "+window.innerWidth); 
 
     if (next > container.scrollWidth - document.body.clientWidth) {
         container.scrollTo({
@@ -56,8 +51,27 @@ function addAutoScroll() {
     setInterval(scrollToNext, 7000);
 }
 
+// Fetch images from the API and add them to the carousel
+function loadCarousselImages() {
+    fetch('api/fetch_caroussel/')
+        .then(response => response.json())
+        .then(data => {
+            const carousselContainer = document.getElementById('caroussel-container');
+            if (data.images) {
+                data.images.forEach(image => {
+                    const div = document.createElement('div');
+                    div.className = 'caroussel-image';
+                    div.style.backgroundImage = `url(${image.url})`;
+                    carousselContainer.appendChild(div);
+                });
+            }
+            addAutoScroll(); // Start the auto-scroll after images are loaded
+        })
+        .catch(error => console.error('Error fetching caroussel images:', error));
+}
+
 // onload 
-window.onload = addAutoScroll();
+window.onload = loadCarousselImages;
 
 // Animation des stats
 $(document).ready(function() {
