@@ -14,6 +14,7 @@ div.pole>div.membres {
     flex-wrap: wrap;
     justify-content: space-around;
     /* margin: 0 4vw; */
+    margin-bottom: 60px;
     gap: 16px;
 
 
@@ -156,5 +157,87 @@ div.membres>div.membre {
         top: 55px;
         left: 150px;
     }
+
+}
+
+
+div.membres:has(>div.membre-sans-role) {
+    justify-content: center;
+
+}
+
+div.membres>div.membre-sans-role {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 200px;
+    gap:12px;
+
+    background-color: var(--red-insaerospace);
+    color: white;
+
+    border-radius: 16px;
+    padding: 16px;
+
+    transition: all var(--transition-duration) ease-in-out;
+
+    h3 {
+        font-family: 'Braah One';
+        font-size: 22px;
+        font-weight: 500;
+        margin: 0;
+    }
+
+
+    div.infos {
+        display: flex;
+        flex-direction: column;
+        /* gap: 4px; */
+       
+    }
+
+    div.reseaux {
+        display: flex;
+        gap: 16px;
+        color: white;
+
+        >a {
+            font-size: 24px;
+            text-decoration: none;
+            color: inherit;
+            transition: all var(--transition-duration);
+
+            &:hover {
+                opacity: 0.8;
+            }
+            
+
+        }
+    }
+
+    >div.photo-de-profil {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+
+        font-size: 40px;
+        color: white;
+        /* background-color: black; */
+        /* border-radius: 100px; */
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    &:hover {
+        transform: translateY(-4px);
+    }
+
+    
+
+
+
 
 }
