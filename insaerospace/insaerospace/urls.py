@@ -25,10 +25,10 @@ urlpatterns = [
     path('nos-membres/', views.nosMembres, name='nos-membres'),
     path('nos-projets/<slug:slug_project>/<slug:slug_article>/', views.article_detail, name='article_detail'),
     path('nos-projets/<slug:slug_project>/', views.project_detail, name='project_detail'),
-
     path('api/fetch_projets/', views.fetch_projets, name='fetch_projets'),
     path('api/fetch_articles/', views.fetch_articles, name='fetch_articles'),
     path('api/fetch_membres/', views.fetch_membres, name='fetch_membres'),
     path('api/fetch_roles/', views.fetch_roles, name='fetch_roles'),
     path('api/fetch_poles/', views.fetch_poles, name='fetch_poles'),
+    path('api/fetch_caroussel/', views.fetch_caroussel, name='caroussel'),
 ]

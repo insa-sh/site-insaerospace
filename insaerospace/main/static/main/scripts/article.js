@@ -64,6 +64,7 @@ async function fetchArticles() {
                         <div id='article-body'>${Array.isArray(article.content) && article.content.length > 0
                         ? article.content.map(item => item && item.body ? marked(item.body) : '').join('<br>')
                         : '<p class="messageErreur">Cet article est vide...</p>'}</div>
+
                     </div>
                 `
             }

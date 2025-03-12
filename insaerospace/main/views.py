@@ -7,6 +7,36 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+@require_GET
+def fetch_caroussel(request):
+    api_token = os.getenv('API_TOKEN')
+    headers = {
+        'Authorization': f'Bearer {api_token}'
+    }
+
+    response = requests.get('http://127.0.0.1:1337/api/caroussels?populate=*', headers=headers)
+    if response.status_code == 200:
+        try:
+            data = response.json()
+            images = []
+            if "data" in data:
+                for item in data["data"]:
+                    item_images = item.get("Images", [])
+                    for img in item_images:
+                        images.append({
+                            'name': img['name'],
+                            'url': f"http://localhost:1337{img['url']}"
+                        })
+            return JsonResponse({'images': images})
+        except ValueError as e:
+            print(f"Error parsing JSON: {e}")
+            print(f"Response content: {response.content}")
+            return JsonResponse({'error': 'Error parsing JSON response'}, status=500)
+    else:
+        print(f"Error fetching caroussel: {response.status_code}")
+        print(f"Response content: {response.content}")
+        return JsonResponse({'error': 'Error fetching caroussel'}, status=response.status_code)
+
 
 # Récupérer les projets
 @require_GET
