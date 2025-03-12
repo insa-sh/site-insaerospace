@@ -50,21 +50,20 @@ async function fetchArticles() {
                 }
 
                 articlesContainer.innerHTML = `
-                    <div class="article" >
+                    <div class="article">
                         <div class="article-data" style="${style_minature}">
-                        <h1>${article.title}</h1>
-                        ${article.description ? `<p class="description">${article.description}</p>` : ''}
-                        ${article.author ? `<p class="auteur">${article.author.name}</p>` : ''}
-                        <p class="date"><i class="fa-solid fa-clock"></i>  ${new Date(article.createdAt).toLocaleDateString('fr-FR', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric'
-                })}</p>
+                            <h1>${article.title}</h1>
+                            ${article.description ? `<p class="description">${article.description}</p>` : ''}
+                            ${article.author ? `<p class="auteur">${article.author.name}</p>` : ''}
+                            <p class="date"><i class="fa-solid fa-clock"></i> ${new Date(article.createdAt).toLocaleDateString('fr-FR', {
+                                day: '2-digit',
+                                month: '2-digit',
+                                year: 'numeric'
+                            })}</p>
                         </div>
-                        <div class='article-body'>${Array.isArray(article.content) && article.content.length > 0
-                        ? article.content.map(item => item && item.body ? marked(item.body) : '').join('<br>')
-                        : '<p class="messageErreur">Cet article est vide...</p>'}</div>
-
+                        <div class='article-body'>
+                            ${article.content ? marked(article.content) : '<p class="messageErreur">Cet article est vide...</p>'}
+                        </div>
                     </div>
                 `
             }
