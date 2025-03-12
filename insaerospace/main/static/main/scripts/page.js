@@ -18,10 +18,7 @@ async function fetchContact() {
         if (contactContainer) {
             if (contact && contact.contenu) {
                 contactContainer.innerHTML = `
-                    <div class="contact">
-                        <h1>${contact.title || 'Contact'}</h1>
-                        <div class="content">${marked(contact.contenu)}</div>
-                    </div>
+                    <div class="article-body">${marked(contact.contenu)}</div>
                 `;
             } else {
                 contactContainer.innerHTML = `
