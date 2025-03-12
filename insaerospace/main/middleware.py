@@ -15,7 +15,7 @@ class SiteInfoMiddleware:
             headers = {
                 'Authorization': f'Bearer {api_token}'
             }
-            response = requests.get("http://localhost:1337/api/global?populate=*", headers=headers)
+            response = requests.get("http://localhost:1337/api/global", headers=headers)
             if response.status_code == 200:
                 data = response.json()
 
