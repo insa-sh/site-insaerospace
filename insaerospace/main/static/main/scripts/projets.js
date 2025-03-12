@@ -19,24 +19,28 @@ function fetchProjects() {
 
 
                 if (Array.isArray(projets)) {
-                    articlesContainer.innerHTML = projets
-                        .map(projet => {
-                            const date = new Date(projet.createdAt);
-                            console.log(projet.miniature);
-                            let style_miniature_projet = "";
-                            if (projet.miniature != null) {
-                                let miniature_url = projet.miniature.formats.large.url;
-                                style_miniature_projet = `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${uploads_url + miniature_url}');`;
-                            }
-                             
-                            return `
-                                <a class="projet" href="/nos-projets/${projet.slug}/" 
-                                   style="${style_miniature_projet}">  
-                                    <h2>${projet.nom}</h2>
-                                    ${projet.description ? `<p class="description">${projet.description}</p>` : ''}
-                                </a>
-                            `;
-                        }).join('');
+                    if (projets.length === 0) {
+                        articlesContainer.innerHTML = "Aucun projet à montrer pour le moment ;)";
+                    } else {
+                        articlesContainer.innerHTML = projets
+                            .map(projet => {
+                                const date = new Date(projet.createdAt);
+                                console.log(projet.miniature);
+                                let style_miniature_projet = "";
+                                if (projet.miniature != null) {
+                                    let miniature_url = projet.miniature.formats.large.url;
+                                    style_miniature_projet = `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${uploads_url + miniature_url}');`;
+                                }
+                                
+                                return `
+                                    <a class="projet" href="/nos-projets/${projet.slug}/" 
+                                       style="${style_miniature_projet}">  
+                                        <h2>${projet.nom}</h2>
+                                        ${projet.description ? `<p class="description">${projet.description}</p>` : ''}
+                                    </a>
+                                `;
+                            }).join('');
+                    }
                 } else {
                     console.error('Expected an array but got:', projets);
                 }
