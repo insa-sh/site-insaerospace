@@ -144,7 +144,20 @@ def fetch_poles(request):
     else:
         return JsonResponse({'error': 'Error fetching poles'}, status=500)
     
+# récupérer le contenu de la page contact (strapi single type)
+@require_GET
+def fetch_contact(request):
+    api_token = os.getenv('API_TOKEN')
+    headers = {
+        'Authorization': f'Bearer {api_token}'
+    }
 
+    response = requests.get('http://127.0.0.1:1337/api/contact-page?fields=titre,contenu', headers=headers)
+    if response.status_code == 200:
+        return JsonResponse(response.json())
+    else:
+        return JsonResponse({'error': 'Error fetching contact page'}, status=500)
+    
 
 
     
@@ -167,3 +180,6 @@ def project_detail(request, slug_project):
 
 def nosMembres(request):
     return render(request, 'main/nos-membres.html')
+
+def contact(request):
+    return render(request, 'main/contact.html')

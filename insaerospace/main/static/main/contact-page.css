@@ -1,0 +1,15 @@
+
+
+div.membres {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 40px;
+    
+
+    img {
+        border: none;
+        box-shadow: none;
+    }
+}
