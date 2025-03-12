@@ -61,9 +61,10 @@ async function fetchArticles() {
                     year: 'numeric'
                 })}</p>
                         </div>
-                        <div id='article-body'>${Array.isArray(article.content)
+                        <div id='article-body'>${Array.isArray(article.content) && article.content.length > 0
                         ? article.content.map(item => item && item.body ? marked(item.body) : '').join('<br>')
-                        : 'Contenu indisponible'}</div>
+                        : '<p class="messageErreur">Cet article est vide...</p>'}</div>
+
                     </div>
                 `
             }

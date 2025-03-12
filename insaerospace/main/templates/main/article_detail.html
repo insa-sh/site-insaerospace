@@ -8,6 +8,12 @@
 {% endblock %}
 
 {% block content %}
-<div id="singleArticleContainer"></div>
+<div id="singleArticleContainer">
+    <!-- loading icon from fontawesome -->
+     <div class="loaderBox">
+        <i class="fas fa-spinner fa-spin fa-3x" style="font-size:24px; color:black;"></i>
+     </div>
+
+</div>
 <script type="module" src="{% static 'main/scripts/article.js' %}"></script>
 {% endblock %}

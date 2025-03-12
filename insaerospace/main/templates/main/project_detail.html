@@ -10,7 +10,11 @@
 
 
 {% block content %}
-<div id="projectDetailContainer"></div>
+<div id="projectDetailContainer">
+    <!-- loading icon from fontawesome -->
+    <div class="loaderBox">
+        <i class="fas fa-spinner fa-spin fa-3x" style="font-size:24px;"></i>
+     </div></div>
 <div id="articlesContainer"></div>
 <script type="module" src="{% static 'main/scripts/project_detail.js' %}"></script>
 {% endblock %}
