@@ -20,9 +20,14 @@ class SiteInfoMiddleware:
                 data = response.json()
 
                 # Access the nested data to get the site name and favicon URL
-                site_name = data.get("data", {}).get("siteName", "INSAerospace")
-                favicon_path = data.get("data", {}).get("favicon", {}).get("url", "")
-                favicon = f'http://localhost:1337{favicon_path}'
+                site_data = data.get("data", {})
+                site_name = site_data.get("siteName") or "INSAerospace"
+                favicon_info = site_data.get("favicon") or {}
+                favicon_path = favicon_info.get("url")
+                if favicon_path:
+                    favicon = f'http://localhost:1337{favicon_path}'
+                else:
+                    favicon = ""
 
                 # Add site_name and favicon to the request context
                 request.site_name = site_name
