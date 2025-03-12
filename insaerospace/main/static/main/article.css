@@ -512,7 +512,7 @@ div.article {
 
 
 
-.messageErreur {
+.messageErreur, p.messageErreur {
     text-align:center;
     font-family: 'Raleway';
     font-size: 18px;
