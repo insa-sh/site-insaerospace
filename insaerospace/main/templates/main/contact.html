@@ -1,0 +1,88 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Nos membres{% endblock %}
+
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'main/article.css' %}">
+<link rel="stylesheet" href="{% static 'main/contact-page.css' %}">
+<link rel="stylesheet" href="{% static 'main/membres.css' %}">
+
+
+{% endblock %}
+
+{% block content %}
+<div class="classic-page-margin">
+    <h1 class="page-title">Contact</h1>
+
+    <div id="contactContainer">
+        <!-- loading icon from fontawesome -->
+
+    </div>
+    <div id="mandatoryContainer">
+        <div class="article-body">
+            <h2>Remerciements</h2>
+            <p>Ce site a été développé avec ❤️ par <a href="http://insash.org">./insa.sh - Le Club Info de l'INSA
+                    Hauts-de-France</a> !</p>
+            <h2>Développement & Design</h2>
+
+
+        </div>
+        <!-- faire deux box pour les deux développeurs avec liens vers leurs réseaux, nom prenom, site perso... -->
+        <div class="membres">
+            <div class="membre">
+                <div class="photo-de-profil">
+                    <img src="http://localhost:1337/uploads/default_pp_a375f13862.png" alt="Maël Advisse">
+                    <div class="emoji-box">
+                        <img class="emoji1" src="{% static 'images/local/emoji/clavier.png' %}">
+                        <img class="emoji2" src="{% static 'images/local/emoji/souris.png' %}">
+                        <img class="emoji3" src="{% static 'images/local/emoji/ordinateur.png' %}">
+                        <img class="emoji4" src="{% static 'images/local/emoji/programmeur.png' %}">
+                        <img class="emoji5" src="{% static 'images/local/emoji/palette.png' %}">
+                    </div>
+                </div>
+                <h3>Maël Advisse</h3>
+                <p class="role">Développeur</p>
+                <div class="reseaux">
+                    <a href="https://instagram.com/" target="_blank">
+                        <i class="fa-brands fa-instagram reseau-icon"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/" target="_blank">
+                        <i class="fa-brands fa-linkedin reseau-icon"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="membre">
+                <div class="photo-de-profil">
+                    <img src="http://localhost:1337/uploads/default_pp_a375f13862.png" alt="Louison Bednarowicz">
+                    <div class="emoji-box">
+                        <img class="emoji1" src="{% static 'images/local/emoji/clavier.png' %}">
+                        <img class="emoji2" src="{% static 'images/local/emoji/souris.png' %}">
+                        <img class="emoji3" src="{% static 'images/local/emoji/ordinateur.png' %}">
+                        <img class="emoji4" src="{% static 'images/local/emoji/programmeur.png' %}">
+                        <img class="emoji5" src="{% static 'images/local/emoji/palette.png' %}">
+                    </div>
+                </div>
+                <h3>Louison Bednarowicz</h3>
+                <p class="role">Développeur</p>
+                <div class="reseaux">
+                    <a href="https://github.com/billyTheSecond" target="_blank">
+                        <i class="fa-brands fa-github reseau-icon"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/louisonbednarowicz" target="_blank">
+                        <i class="fa-brands fa-linkedin reseau-icon"></i>
+                    </a>
+                    <a href="https://webdev.knowitbetter.fr" target="_blank">
+                        <i class="fa-solid fa-globe reseau-icon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="module" src="{% static 'main/scripts/page.js' %}"></script>
+
+
+{% endblock %}

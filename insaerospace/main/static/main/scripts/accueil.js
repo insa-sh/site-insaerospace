@@ -57,15 +57,33 @@ function loadCarousselImages() {
         .then(response => response.json())
         .then(data => {
             const carousselContainer = document.getElementById('caroussel-container');
-            if (data.images) {
-                data.images.forEach(image => {
+            if (data.images && data.images.length > 0) {
+                // Effacer le contenu initial uniquement s'il y a des images
+                carousselContainer.innerHTML = '';
+                console.log("supprimé");
+                data.images.forEach(imageData => {
                     const div = document.createElement('div');
                     div.className = 'caroussel-image';
-                    div.style.backgroundImage = `url(${image.url})`;
                     carousselContainer.appendChild(div);
+                    console.log("élément créé sans image");
+
+                    // Créer un objet Image pour précharger l'image
+                    const imgPreloader = new Image();
+                    imgPreloader.onload = function() {
+                        // Une fois l'image chargée, ajouter l'image de fond et déclencher l'animation
+                        div.style.backgroundImage = `url(${imageData.url})`;
+                        div.classList.add('fade-in');
+                        carousselContainer.classList.remove('loading'); // si la classe y est encore, la retirer
+                        console.log("affiché");
+                    };
+                    imgPreloader.onerror = function() {
+                        console.error("Erreur lors du chargement de l'image", imageData.url);
+                    };
+                    // Débuter le téléchargement de l'image
+                    imgPreloader.src = imageData.url;
                 });
             }
-            addAutoScroll(); // Start the auto-scroll after images are loaded
+            addAutoScroll(); // Démarrer le défilement automatique après le chargement des images
         })
         .catch(error => console.error('Error fetching caroussel images:', error));
 }

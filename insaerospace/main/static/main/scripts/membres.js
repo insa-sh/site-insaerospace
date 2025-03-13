@@ -136,20 +136,23 @@ function fetchMembres() {
                     <div class="pole">
                         <h2>Nos membres</h2>
                         <div class="membres">
-                        ${membres.filter(membre => !membre.role).map(membre => `
+                        ${(() => {
+                            const membresSansRole = membres.filter(membre => !membre.role);
+                            return membresSansRole.length > 0 ? membresSansRole.map(membre => `
                             <div class="membre-sans-role">
                                 <div class="photo-de-profil">
-                                <i class="fa-solid fa-user-astronaut"></i>
+                                    <i class="fa-solid fa-user-astronaut"></i>
                                 </div>
                                 <div class="infos">
-                                <h3>${membre.nom}</h3>
-                                ${membre.pseudo_insta || membre.pseudo_linkedin ? '<div class="reseaux">' : ''}
-                                ${membre.pseudo_insta ? `<a href="https://instagram.com/${membre.pseudo_insta}" target="_blank"><i class="fa-brands fa-instagram reseau-icon"></i></a>` : ''}
-                                ${membre.pseudo_linkedin ? `<a href="https://linkedin.com/in/${membre.pseudo_linkedin}" target="_blank"><i class="fa-brands fa-linkedin reseau-icon"></i></a>` : ''}
-                                ${membre.pseudo_insta || membre.pseudo_linkedin ? '</div>' : ''}
+                                    <h3>${membre.nom}</h3>
+                                    ${membre.pseudo_insta || membre.pseudo_linkedin ? '<div class="reseaux">' : ''}
+                                    ${membre.pseudo_insta ? `<a href="https://instagram.com/${membre.pseudo_insta}" target="_blank"><i class="fa-brands fa-instagram reseau-icon"></i></a>` : ''}
+                                    ${membre.pseudo_linkedin ? `<a href="https://linkedin.com/in/${membre.pseudo_linkedin}" target="_blank"><i class="fa-brands fa-linkedin reseau-icon"></i></a>` : ''}
+                                    ${membre.pseudo_insta || membre.pseudo_linkedin ? '</div>' : ''}
                                 </div>
                             </div>
-                        `).join('')}
+                            `).join('') : '<p class="messageErreur">Pas de membres à afficher</p>';
+                        })()}
                         </div>
                     </div>
                 `;
