@@ -17,7 +17,7 @@
         rooms = options.rooms || String(options.number).split('').length,
         _fillZero = !!options.rooms;
     fontStyle.color = fontStyle.color || '#000'; 
-    fontStyle['font-size'] = fontStyle['font-size'] || 14;
+    fontStyle['font-size'] = fontStyle['font-size'] || 104;
     // 计算单个数字宽度
     $self.css({
       display: 'flex',
