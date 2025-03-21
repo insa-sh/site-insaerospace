@@ -156,23 +156,28 @@ header {
 }
 
 .stats {
-    height: 150px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     gap: 40px;
     align-items: center;
-    margin: 80px 120px 160px 120px;
+    margin: 80px 5vw 160px 5vw;
 }
 
 .groupe {
     height: 100%;
     display: flex;
     flex-direction: row;
+
+    flex: 1;
+    max-width: 500px;
+    min-width: min(200px,90vw);
 }
 
-.barre {
+.barre::before {
+    content: "";
+    display: block;
     width: 13px;
     height: 100%;
     background-color: var(--red-insaerospace);
@@ -185,14 +190,24 @@ header {
     align-items:start;
     justify-content: center;
     gap: 16px;
+    padding: 20px;
+    /* padding-left: 20px; */
+    padding-right: 40px;
+
+
 }
 
 .valeur > p {
-    padding-left: 40px;
-    padding-right: 40px;
     color: #FFF;
     font-family: Raleway;
-    font-size: 32px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.valeur > p.nombre {
+    color: #FFF;
+    font-family: Raleway;
+    font-size: 54px;
     font-weight: 700;
 }
 
@@ -206,4 +221,22 @@ header {
     #caroussel-text-content p {
         font-size: 16px;
     }
+
+
+
+
+
+    /*  nomrbres qui scrollent */
+    .stats {
+        margin: 40px 20px 80px 40px;
+    }
+
+    .valeur > p {
+        font-size: 18px;
+    }
+
+    .valeur > p.nombre {
+        font-size: 32px;
+    }
+    
 }

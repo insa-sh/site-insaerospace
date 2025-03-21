@@ -333,10 +333,14 @@ footer > div > a {
         /* opacity: 0; */
         /* make it not a probleme for the mouse */
         pointer-events: none;
-        user-select: none;
+        /* user-select: none; */
         display: none;
 
 
+    }
+
+    header>nav * {
+        user-select: none;
     }
 
     header>nav>ul {
