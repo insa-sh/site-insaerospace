@@ -63,15 +63,16 @@ def fetch_articles(request):
     headers = {'Authorization': f'Bearer {api_token}'}
     slug = request.GET.get('slug')
     projet = request.GET.get('projet')
-
+    
+    base_url = 'http://127.0.0.1:1337/api/articles?populate=*'
+    sort = '&sort=createdAt:desc'  # Descending order (antichronologique)
 
     if slug and projet:
-        url = f'http://127.0.0.1:1337/api/articles?populate=*&filters[slug][$eq]={slug}&filters[projet][slug][$eq]={projet}'
-    elif slug and not projet:
-        url = f'http://127.0.0.1:1337/api/articles?populate=*&filters[slug][$eq]={slug}'
-    elif projet and not slug:
-        url = f'http://127.0.0.1:1337/api/articles?populate=*&filters[projet][slug][$eq]={projet}&sort=publishedAt:asc'
-        # url = f'http://127.0.0.1:1337/api/articles?populate=*'
+        url = f"{base_url}&filters[slug][$eq]={slug}&filters[projet][slug][$eq]={projet}{sort}"
+    elif slug:
+        url = f"{base_url}&filters[slug][$eq]={slug}{sort}"
+    elif projet:
+        url = f"{base_url}&filters[projet][slug][$eq]={projet}{sort}"
     else:
         return JsonResponse({'error': 'a slug or projet parameter is required'}, status=400)
 
@@ -79,7 +80,6 @@ def fetch_articles(request):
     if response.status_code != 200:
         return JsonResponse({'error': 'Error fetching articles'}, status=500)
 
-    
     return JsonResponse(response.json())
 
 
