@@ -17,7 +17,7 @@
         rooms = options.rooms || String(options.number).split('').length,
         _fillZero = !!options.rooms;
     fontStyle.color = fontStyle.color || '#000'; 
-    fontStyle['font-size'] = fontStyle['font-size'] || 104;
+    fontStyle['font-size'] = fontStyle['fontSize'] || 104;
     // Calculer la largeur d'un seul chiffre
     $self.css({
       display: 'flex',

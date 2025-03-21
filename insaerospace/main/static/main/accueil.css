@@ -158,8 +158,10 @@ header {
 .stats {
     height: 150px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 40px;
     align-items: center;
     margin: 80px 120px 160px 120px;
 }
