@@ -213,6 +213,19 @@ header {
 
 
 /* ------------CONTENU PAGE ACCUEIL (ARTICLE)------------------- */
+#socials>a {
+    color: white;
+    font-size: 42px;
+
+    transition: all 0.1s ease-in-out;
+}
+
+#socials>a:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+
 section {
     display: flex;
     flex-direction: column;
