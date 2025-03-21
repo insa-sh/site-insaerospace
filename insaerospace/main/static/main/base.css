@@ -88,8 +88,43 @@ h2 {
     margin: 16px 0;
 }
 
+strong {
+    font-weight: 700;
+    color: var(--red-insaerospace);
+}
+
+
 .classic-page-margin {
     margin: 0 4vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* bouttons */
+
+button, a[type="button"] {
+    font-family: "Raleway";
+    font-size: 16px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: var(--red-insaerospace);
+    color: white !important;
+    text-align: center;
+    width: fit-content;
+
+    align-self: center;
+
+    transition: all var(--transition-duration) !important;
+}
+
+button:hover, a[type="button"]:hover {
+    background-color: var(--red-insaerospace-hover);
 }
 
 
@@ -249,6 +284,14 @@ footer {
     color: #fff;
 }
 
+footer a {
+    color: inherit;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
 .insaerospace {
     color: #FFF;
     text-shadow: 0px 4px 20px rgba(0, 0, 0, 0.40);
@@ -333,10 +376,14 @@ footer > div > a {
         /* opacity: 0; */
         /* make it not a probleme for the mouse */
         pointer-events: none;
-        user-select: none;
+        /* user-select: none; */
         display: none;
 
 
+    }
+
+    header>nav * {
+        user-select: none;
     }
 
     header>nav>ul {

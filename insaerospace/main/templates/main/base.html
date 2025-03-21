@@ -45,13 +45,13 @@
             <div class="line"></div>
             <div class="links">
                 <a href="{% url 'accueil' %}">Accueil</a>
-                <a href="#">Nos Projets</a>
-                <a href="#">L'équipe INSAerospace</a>
-                <a href="#">Contact</a>
-                <a href="#">Nos Partenaires - <b>Devenir Partenaire</b></a>
-                <a href="#">Mentions Légales</a>
+                <a href="{% url 'nos-projets' %}">Nos Projets</a>
+                <a href="{% url 'nos-membres' %}">L'équipe INSAerospace</a>
+                <a href="{% url 'contact' %}">Contact</a>
+                <a href="{% url 'contact' %}">Nos Partenaires - <b>Devenir Partenaire</b></a>
+                <a href="{% url 'contact' %}">Mentions Légales</a>
             </div>
-            <p class="insash">Tous droits réservés - © INSAerospace 2024 - Site réalisé avec ❤️ par ./insa.sh, le Club Info de l’INSA Hauts-de-France</p>
+            <p class="insash">Tous droits réservés - © INSAerospace 2024 - Site réalisé avec ❤️ par <a href="https://insash.org" target="_blank">./insa.sh, le Club Info de l’INSA Hauts-de-France</a></p>
         </footer>
     </body>
 </html>

@@ -19,5 +19,16 @@ div.membres {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
     
+}
+
+#contactContainer>.article-body {
+    width: 100%;
+}
+
+#mandatoryContainer {
+    margin-bottom: 180px;
+    max-width: 900px;
+    width: 100%;
 }
