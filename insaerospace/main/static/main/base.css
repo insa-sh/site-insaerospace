@@ -90,6 +90,9 @@ h2 {
 
 .classic-page-margin {
     margin: 0 4vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 
