@@ -212,6 +212,84 @@ header {
 }
 
 
+/* ------------CONTENU PAGE ACCUEIL (ARTICLE)------------------- */
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(black 100vh,rgb(13, 13, 64));
+
+    padding-bottom: 180px;
+}
+#accueil-content{
+    padding: 0 5vw;
+
+    * {
+        line-height: 1.5;
+
+    }
+    
+
+    h2 {
+        font-size: 40px;
+        font-weight: 700;
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    .flex {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items:center;
+        gap: 40px;
+    }
+
+    .flex>img.cover {
+        width: 300px;
+        min-height: 300px;
+        object-fit: cover;
+        border-radius: 12px;
+
+        border: none;
+    }
+
+    .flex>img {
+        width: 300px;
+        min-height: 300px;
+        object-fit: contain;
+        border-radius: 12px;
+        border: none;
+        box-shadow: none;
+    }
+
+    .flex>div {
+        flex:1;
+    }
+
+    li {
+        margin-bottom: 24px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 800px) {
 
     #caroussel-text-content h2 {

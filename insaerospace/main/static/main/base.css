@@ -88,6 +88,12 @@ h2 {
     margin: 16px 0;
 }
 
+strong {
+    font-weight: 700;
+    color: var(--red-insaerospace);
+}
+
+
 .classic-page-margin {
     margin: 0 4vw;
     display: flex;

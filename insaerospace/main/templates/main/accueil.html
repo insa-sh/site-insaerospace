@@ -5,7 +5,8 @@
 
 {% block extrahead %}
 <link rel="stylesheet" type="text/css" href="{% static 'main/accueil.css' %}">
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>    
+<link rel="stylesheet" type="text/css" href="{% static 'main/article.css' %}">
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="{% static 'main/scripts/jquery.rollNumber.js' %}"></script>
 {% endblock %}
 
@@ -21,13 +22,13 @@
         <!-- Les images seront ajoutées ici par JavaScript -->
 
         <!-- fausse image en attendant le chargement -->
-         <!-- loading icon from fontawesome -->
-     <div class="loaderBox">
-        <!-- <i class="fas fa-spinner fa-spin fa-3x" style="font-size:24px; color:white;"></i> -->
-     </div>
+        <!-- loading icon from fontawesome -->
+        <div class="loaderBox">
+            <!-- <i class="fas fa-spinner fa-spin fa-3x" style="font-size:24px; color:white;"></i> -->
+        </div>
 
     </div>
-   
+
     <div class="stats">
         <div class="groupe">
             <div class="barre"></div>
@@ -50,6 +51,77 @@
                 <p>Années d'experiences</p>
             </div>
         </div>
+    </div>
+
+
+    <div id="accueil-content" class="article-body">
+        <h2>Qui sommes-nous ?</h2>
+        <p>
+            INSAerospace est l'association aérospatiale de l'INSA Hauts-de-France. Nous concevons des fusées de toutes
+            tailles, allant des micro-fusées aux FuseX (Fusée Expérimentale).
+        </p>
+
+        <h2>Nos projets :</h2>
+        <div class="flex">
+            <img class="cover" src="{% static 'images/photos_accueil/micro.png' %}" alt="">
+            <div>
+                <ul>
+                    <li>
+                        <strong>Micro-fusée :</strong> Concevez et lancez votre propre micro-fusée (environ 30 cm,
+                        imprimée en PLA, équipée d'un petit moteur préfabriqué et d'un parachute).
+                    </li>
+                    <li>
+                        <strong>RUBY-1 :</strong> FuseX expérimentale conçue pour apprendre, tester et obtenir des
+                        retours d'expérience.
+                    </li>
+                    <li>
+                        <strong>RUBY-2 :</strong> Évolution de la RUBY-1. Cette FuseX est destinée à participer à la
+                        campagne nationale de lancement de fusées, le C'Space, sous l'encadrement du CNES.
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <h2>Nos objectifs :</h2>
+        <div class="flex">
+            <div>
+                <p>
+                    L'un de nos principaux objectifs est de <strong>participer au C'Space</strong>, la campagne nationale de lancement de
+                    fusées organisée par le CNES (Centre national d'études spatiales). Cet événement, qui se tient chaque année,
+                    est l'occasion pour des étudiants de toute la France de tester et mettre en avant leurs projets dans un environnement sécurisé.
+                </p>
+                <p>
+                    Tous nos projets sont réalisés de manière <strong>autodidacte</strong>, avec l'aide de membres expérimentés.
+                    L'objectif est
+                    donc aussi de <strong>permettre à chacun de développer des compétences approfondies en aérospatiale</strong>, utiles
+                    aussi bien pour le CV, en entreprise que pour les études.
+                </p>
+            </div>
+            <img src="{% static 'images/photos_accueil/cspace_logo_remasterise.webp' %}" alt="">
+        </div>
+
+
+
+        <h2>Pour qui ?</h2>
+        <p>
+            L'association est <strong>ouverte à tous les étudiants de l'Université Polytechnique Hauts-de-France (UPHF)</strong>, motivés
+            et passionnés par l'aérospatiale, quel que soit leur niveau. Nous accueillons également des étudiants
+            intéressés par la mécanique et l'électronique. Notre équipe est là pour accompagner chaque membre dans la
+            réalisation de leurs projets.
+        </p>
+
+        <h2>Quand se retrouver ?</h2>
+        <p>
+            Nos séances se tiennent le <strong>jeudi après-midi</strong>, généralement en salle de travaux pratiques (selon
+            disponibilités). <strong>Aucune obligation</strong>. INSAerospace ne vous impose rien, cela doit être un loisir pour vous.
+        </p>
+
+        <h2>Matériel nécessaire ?</h2>
+        <p>
+            <strong>Aucun matériel spécifique n'est requis</strong> : des ordinateurs et de l’équipement sont disponibles en salle de TP,
+            mais vous pouvez aussi utiliser votre propre matériel. Les licences étudiantes sont offertes grâce à l'INSA.
+        </p>
     </div>
 </section>
 
