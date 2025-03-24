@@ -124,7 +124,7 @@ function fetchMembres() {
                 const membresContainer = document.getElementById('membresContainer');
                 if (membresContainer) {
                     // S'il y a une erreur, afficher un message d'erreur
-                    membresContainer.innerHTML = "<p>Oups, une erreur s'est produite... On n'arrive plus à trouver nos membres :`(</p>";
+                    membresContainer.innerHTML = "<p >Oups, une erreur s'est produite... On n'arrive plus à trouver nos membres :`(</p>";
                     
                 }
             });
