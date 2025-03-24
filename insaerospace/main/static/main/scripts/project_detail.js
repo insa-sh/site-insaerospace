@@ -15,7 +15,21 @@ async function fetchArticles() {
         const projectDetailContainer = document.getElementById('projectDetailContainer');
 
         const response_projet = await fetch(`/api/fetch_projets?slug=${projectSlug}`);
+        // Check if the project detail API call was successful
+        if (!response_projet.ok) {
+            if (projectDetailContainer) {
+                projectDetailContainer.innerHTML = `<p class="error">Erreur: impossible de récupérer le détail du projet (API indisponible).</p>`;
+            }
+            return;
+        }
         const project_data = await response_projet.json();
+        if (!project_data.data || project_data.data.length === 0) {
+            if (projectDetailContainer) {
+                projectDetailContainer.innerHTML = `<p class="error">Erreur: projet introuvable.</p>`;
+                // renvoyer 503
+            }
+            return;
+        }
         const projet = project_data.data[0];
         console.log(projet);
 
@@ -26,7 +40,6 @@ async function fetchArticles() {
         }
 
         if (projectDetailContainer) {
-
             // Empty dateHtml by default
             let dateHtml = '';
 
