@@ -13,8 +13,12 @@ def fetch_caroussel(request):
     headers = {
         'Authorization': f'Bearer {api_token}'
     }
-
-    response = requests.get('http://127.0.0.1:1337/api/caroussel?populate=*', headers=headers)
+    try:
+        response = requests.get('http://127.0.0.1:1337/api/caroussel?populate=*', headers=headers)
+    except requests.exceptions.RequestException as e:
+        print(f"Error contacting backend in fetch_caroussel: {e}")
+        return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
+    
     if response.status_code == 200:
         try:
             data = response.json()
@@ -37,7 +41,6 @@ def fetch_caroussel(request):
         return JsonResponse({'error': 'Error fetching caroussel: ' + str(response.content)}, status=response.status_code)
 
 
-# Récupérer les projets
 @require_GET
 def fetch_projets(request):
     api_token = os.getenv('API_TOKEN')
@@ -46,16 +49,20 @@ def fetch_projets(request):
     }
 
     slug_projet = request.GET.get('slug')
-
-    if slug_projet:
-        response = requests.get(f'http://127.0.0.1:1337/api/projets?populate=*&filters[slug][$eq]={slug_projet}', headers=headers)
-    else:
-        response = requests.get('http://127.0.0.1:1337/api/projets?populate=*', headers=headers)
+    try:
+        if slug_projet:
+            response = requests.get(f'http://127.0.0.1:1337/api/projets?populate=*&filters[slug][$eq]={slug_projet}', headers=headers)
+        else:
+            response = requests.get('http://127.0.0.1:1337/api/projets?populate=*', headers=headers)
+    except requests.exceptions.RequestException as e:
+        print(f"Error contacting backend in fetch_projets: {e}")
+        return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
         
     if response.status_code == 200:
         return JsonResponse(response.json())
     else:
         return JsonResponse({'error': 'Error fetching articles'}, status=500)
+
 
 @require_GET
 def fetch_articles(request):
@@ -76,7 +83,12 @@ def fetch_articles(request):
     else:
         return JsonResponse({'error': 'a slug or projet parameter is required'}, status=400)
 
-    response = requests.get(url, headers=headers)
+    try:
+        response = requests.get(url, headers=headers)
+    except requests.exceptions.RequestException as e:
+        print(f"Error contacting backend in fetch_articles: {e}")
+        return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
+
     if response.status_code != 200:
         return JsonResponse({'error': 'Error fetching articles'}, status=500)
 
@@ -91,11 +103,14 @@ def fetch_membres(request):
     }
 
     slug_membre = request.GET.get('slug')
-
-    if slug_membre:
-        response = requests.get(f'http://127.0.0.1:1337/api/membres?populate=*&filters[slug][$eq]={slug_membre}', headers=headers)
-    else:
-        response = requests.get('http://127.0.0.1:1337/api/membres?populate=*', headers=headers)
+    try:
+        if slug_membre:
+            response = requests.get(f'http://127.0.0.1:1337/api/membres?populate=*&filters[slug][$eq]={slug_membre}', headers=headers)
+        else:
+            response = requests.get('http://127.0.0.1:1337/api/membres?populate=*', headers=headers)
+    except requests.exceptions.RequestException as e:
+        print(f"Error contacting backend in fetch_membres: {e}")
+        return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
     
     if response.status_code == 200:
         return JsonResponse(response.json())
@@ -113,18 +128,23 @@ def fetch_roles(request):
     slug_role = request.GET.get('slug')
     slug_pole = request.GET.get('pole')
 
-    if slug_role:
-        response = requests.get(f'http://127.0.0.1:1337/api/role-membres?populate=*&filters[slug][$eq]={slug_role}', headers=headers)
-    elif slug_pole:
-        response = requests.get(f'http://127.0.0.1/api/role-membres?populate=*&filters[pole][slug][$eq]={slug_pole}', headers=headers)
-    else:
-        response = requests.get('http://127.0.0.1:1337/api/role-membres?populate=*', headers=headers)
+    try:
+        if slug_role:
+            response = requests.get(f'http://127.0.0.1:1337/api/role-membres?populate=*&filters[slug][$eq]={slug_role}', headers=headers)
+        elif slug_pole:
+            response = requests.get(f'http://127.0.0.1/api/role-membres?populate=*&filters[pole][slug][$eq]={slug_pole}', headers=headers)
+        else:
+            response = requests.get('http://127.0.0.1:1337/api/role-membres?populate=*', headers=headers)
+    except requests.exceptions.RequestException as e:
+        print(f"Error contacting backend in fetch_roles: {e}")
+        return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
     
     if response.status_code == 200:
         return JsonResponse(response.json())
     else:
         return JsonResponse({'error': 'Error fetching roles'}, status=500)
     
+
 @require_GET
 def fetch_poles(request):
     api_token = os.getenv('API_TOKEN')
@@ -133,18 +153,21 @@ def fetch_poles(request):
     }
 
     slug_pole = request.GET.get('slug')
-
-    if slug_pole:
-        response = requests.get(f'http://127.0.0.1:1337/api/pole-roles?populate=*&filters[slug][$eq]={slug_pole}', headers=headers)
-    else:
-        response = requests.get('http://127.0.0.1:1337/api/pole-roles?populate=*', headers=headers)
+    try:
+        if slug_pole:
+            response = requests.get(f'http://127.0.0.1:1337/api/pole-roles?populate=*&filters[slug][$eq]={slug_pole}', headers=headers)
+        else:
+            response = requests.get('http://127.0.0.1:1337/api/pole-roles?populate=*', headers=headers)
+    except requests.exceptions.RequestException as e:
+        print(f"Error contacting backend in fetch_poles: {e}")
+        return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
     
     if response.status_code == 200:
         return JsonResponse(response.json())
     else:
         return JsonResponse({'error': 'Error fetching poles'}, status=500)
     
-# récupérer le contenu de la page contact (strapi single type)
+
 @require_GET
 def fetch_contact(request):
     api_token = os.getenv('API_TOKEN')
@@ -152,13 +175,16 @@ def fetch_contact(request):
         'Authorization': f'Bearer {api_token}'
     }
 
-    response = requests.get('http://127.0.0.1:1337/api/contact-page?fields=titre,contenu', headers=headers)
+    try:
+        response = requests.get('http://127.0.0.1:1337/api/contact-page?fields=titre,contenu', headers=headers)
+    except requests.exceptions.RequestException as e:
+        print(f"Error contacting backend in fetch_contact: {e}")
+        return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
+    
     if response.status_code == 200:
         return JsonResponse(response.json())
     else:
         return JsonResponse({'error': 'Error fetching contact page'}, status=500)
-    
-
 
     
 
