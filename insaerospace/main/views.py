@@ -1,7 +1,9 @@
 import os
 import requests
 from django.shortcuts import render
+import json
 from django.http import JsonResponse
+from datetime import datetime
 from django.views.decorators.http import require_GET
 from dotenv import load_dotenv
 
@@ -191,9 +193,47 @@ def fetch_contact(request):
 
 
 
-# Create your views here.
 def accueil(request):
-    return render(request, 'main/accueil.html')
+    # Compter les membres actifs dans la base de données
+    membres_count = 0
+    try:
+        # en utilisant fetch_membres() 
+        response = fetch_membres(request)
+        if response.status_code == 200:
+            membres_count = len(json.loads(response.content).get('data', []))
+            membres_count = len(response.json().get('data', []))
+    except Exception as e:
+        print(f"Error fetching membres: {e}")
+        
+    try:
+        now = datetime.now()
+        if (now.month, now.day) >= (2, 23):
+            exp_years = now.year - 2023
+        else:
+            exp_years = now.year - 2023 - 1
+    except Exception as e:
+        print(f"Error calculating experience years: {e}")
+
+    # Récupérer le nombre de micro-fusées depuis la table Global de la db
+    nb_micro_fusees = 0
+    try:
+        api_token = os.getenv('API_TOKEN')
+        headers = {
+            'Authorization': f'Bearer {api_token}'
+        }
+        response = requests.get('http://127.0.0.1:1337/api/global', headers=headers)
+        if response.status_code == 200:
+            data = response.json().get('data', {})
+            nb_micro_fusees = data.get('nombredemicrofusees', 0)
+    except Exception as e:
+        print(f"Error fetching global data: {e}")
+
+
+        
+
+
+    # Passer la variable au template
+    return render(request, 'main/accueil.html', {'membres_count': membres_count, 'nb_micro_fusees': nb_micro_fusees, 'experience_years': exp_years})
 
 def nosProjets(request):
     return render(request, 'main/nos-projets.html')

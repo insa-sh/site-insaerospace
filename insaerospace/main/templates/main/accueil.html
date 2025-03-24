@@ -21,7 +21,6 @@
     <div class="caroussel loading" id="caroussel-container">
         <!-- Les images seront ajoutées ici par JavaScript -->
 
-        <!-- fausse image en attendant le chargement -->
         <!-- loading icon from fontawesome -->
         <div class="loaderBox">
             <!-- <i class="fas fa-spinner fa-spin fa-3x" style="font-size:24px; color:white;"></i> -->
@@ -33,21 +32,21 @@
         <div class="groupe">
             <div class="barre"></div>
             <div class="valeur">
-                <p class="nombre" data-number="35"></p>
+                <p class="nombre" id="membres-counter" data-number="{{ membres_count }}"></p>
                 <p>Membres actifs</p>
             </div>
         </div>
         <div class="groupe">
             <div class="barre"></div>
             <div class="valeur">
-                <p class="nombre" data-number="27"></p>
+                <p class="nombre" data-number="{{ nb_micro_fusees }}"></p>
                 <p>Micro-fusées/an</p>
             </div>
         </div>
         <div class="groupe">
             <div class="barre"></div>
             <div class="valeur">
-                <p class="nombre" data-number="03453"></p>
+                <p class="nombre" data-number="{{ experience_years }}"></p>
                 <p>Années d'experiences</p>
             </div>
         </div>
