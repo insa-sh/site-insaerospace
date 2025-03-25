@@ -2,7 +2,6 @@ import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 
 const uploads_url = "http://localhost:1337";
 
-
 async function fetchArticles() {
     try {
         // Récupérer le slug de l'URL
@@ -27,7 +26,6 @@ async function fetchArticles() {
             document.title = `${articleSlug + " | INSAerospace" || 'Article sans titre | INSAerospace'}`;
         }
 
-
         const articlesContainer = document.getElementById('singleArticleContainer');
         if (articlesContainer) {
             // Afficher l'article s'il existe
@@ -45,8 +43,7 @@ async function fetchArticles() {
                 if (article.cover != null) {
                     let miniature_url = uploads_url + article.cover.url;
                     style_minature = `background: linear-gradient(-90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.70) 100%), url('${miniature_url}'); background-size: cover; background-position: center;`
-                    console.log (style_minature)
-                 
+                    console.log(style_minature);
                 }
 
                 articlesContainer.innerHTML = `
@@ -65,13 +62,22 @@ async function fetchArticles() {
                             ${article.content ? marked(article.content) : '<p class="messageErreur">Cet article est vide...</p>'}
                         </div>
                     </div>
-                `
+                `;
             }
         } else {
             console.error('articlesContainer is null');
         }
     } catch (error) {
         console.error('Error fetching articles:', error);
+        const articlesContainer = document.getElementById('singleArticleContainer');
+        if (articlesContainer) {
+            articlesContainer.innerHTML = `
+                <div class="article">
+                    <h1>Erreur</h1>
+                    <p>L'API est indisponible. Veuillez réessayer ultérieurement.</p>
+                </div>
+            `;
+        }
     }
 }
 

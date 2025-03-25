@@ -1,4 +1,3 @@
-
 /* FONTS */
 
 /* Raleway */
@@ -30,7 +29,7 @@
 * {
     --red-insaerospace: #CC0D0B;
     --red-insaerospace-hover: #A00A09;
-    
+
     --transition-duration: 0.2s;
 
 
@@ -58,8 +57,22 @@ a {
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
-    
+
 }
+
+/* pour les liens dans du texte */
+a.text-link {
+    color: var(--red-insaerospace);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s;
+}
+
+a.text-link:hover {
+    color: var(--red-insaerospace-hover);
+}
+
+
 
 p {
     font-family: 'Raleway';
@@ -68,7 +81,8 @@ p {
     /* line-height: 1.5; */
 }
 
-h1,h2 {
+h1,
+h2 {
     color: inherit;
     font-family: "Nasalization";
     /* font-size: 24px; */
@@ -81,6 +95,7 @@ h1 {
 
     margin: 20px 0;
 }
+
 h2 {
     font-size: 24px;
     font-weight: 700;
@@ -104,7 +119,8 @@ strong {
 
 /* bouttons */
 
-button, a[type="button"] {
+button,
+a[type="button"] {
     font-family: "Raleway";
     font-size: 16px;
     font-weight: 700;
@@ -123,7 +139,8 @@ button, a[type="button"] {
     transition: all var(--transition-duration) !important;
 }
 
-button:hover, a[type="button"]:hover {
+button:hover,
+a[type="button"]:hover {
     background-color: var(--red-insaerospace-hover);
 }
 
@@ -138,7 +155,8 @@ main {
     min-height: calc(100vh - 80px);
 }
 
-header>*, header>*>* {
+header>*,
+header>*>* {
     transition: all var(--transition-duration);
 
 }
@@ -199,7 +217,7 @@ header::before {
     transform: translate(-50%, 0);
     border-bottom-right-radius: 40%;
     border-bottom-left-radius: 40%;
-    
+
     transition: border-radius 0.5s, height 0.5s, background-color 0.5s;
 
 }
@@ -217,7 +235,7 @@ header::before {
 
 
 
-nav > ul {
+nav>ul {
     display: flex;
     justify-content: space-between;
     list-style-type: none;
@@ -230,7 +248,9 @@ nav a {
     padding: 8px 16px;
     transition: color 0.3s;
 }
-nav  a:hover, nav a.opened{
+
+nav a:hover,
+nav a.opened {
     color: var(--red-insaerospace);
 }
 
@@ -244,6 +264,7 @@ div#header-site-name {
     gap: 12px;
     align-items: center;
 }
+
 div#header-site-name>a {
     text-decoration: none;
     color: inherit;
@@ -314,7 +335,7 @@ footer>div {
     margin-bottom: 60px;
 }
 
-footer > div > a {
+footer>div>a {
     color: white;
     text-decoration: none;
     font-family: "Raleway";
@@ -346,15 +367,17 @@ footer > div > a {
     .computer-only {
         display: none;
     }
+
     header {
         padding: 6px 10px;
         height: 80px;
     }
+
     header::before {
         border-bottom-right-radius: 0%;
         border-bottom-left-radius: 0%;
 
-    
+
     }
 
 
@@ -389,8 +412,9 @@ footer > div > a {
     header>nav>ul {
         flex-direction: column;
         gap: 8px;
-        
+
     }
+
     header>div#hamburger-button {
         font-size: 24px;
         padding: 8px 16px;
@@ -399,7 +423,7 @@ footer > div > a {
 
     header>nav.open {
         display: block;
-        animation: openMobileMenu var(--transition-duration) ;
+        animation: openMobileMenu var(--transition-duration);
         animation-fill-mode: forwards;
         opacity: 1;
         pointer-events: all;
@@ -416,7 +440,7 @@ footer > div > a {
         pointer-events: none;
         transform: translateY(-40%) scale(1.05);
 
-        
+
 
     }
 
@@ -425,18 +449,20 @@ footer > div > a {
     @keyframes openMobileMenu {
         from {
             transform: translateY(-20%) scale(1.05);
-            
+
         }
+
         to {
             transform: translateY(0) scale(1);
         }
     }
- 
+
 
     @keyframes closeMobileMenu {
         0% {
             transform: translateY(0);
         }
+
         to {
             transform: translateY(-20%) scale(1.05);
             opacity: 0;

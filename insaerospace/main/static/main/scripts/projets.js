@@ -2,9 +2,6 @@ const uploads_url = "http://localhost:1337";
 
 function fetchProjects() {
     try {
-        // Modifier l'URL de la requête pour inclure un paramètre de requête pour les projets 
-
-        // Récupérer les projets (vides et non-vides sans distinction)
         fetch('/api/fetch_projets')
             .then(response => response.json())
             .then(data => {
@@ -16,7 +13,6 @@ function fetchProjects() {
                     console.error('projectsContainer is null');
                     return;
                 }
-
 
                 if (Array.isArray(projets)) {
                     if (projets.length === 0) {
@@ -43,14 +39,23 @@ function fetchProjects() {
                     }
                 } else {
                     console.error('Expected an array but got:', projets);
+                    articlesContainer.innerHTML = "<p class='messageErreur'>Aahhh, <b>on a plein de super projets !</b> On n'arrive juste pas à remettre la main dessus maintenant... <br>Retrouve-nous sur Instagram : <a class='text-link' href='https://instagram.com/insaerospace/' target='_blank'>@insaerospace</a></p>";
                 }
             })
             .catch(error => {
                 console.error('Error fetching projets:', error);
+                const articlesContainer = document.getElementById('projectsContainer');
+                if (articlesContainer) {
+                    articlesContainer.innerHTML = "<p class='messageErreur'>Aahhh, <b>on a plein de super projets !</b> On n'arrive juste pas à remettre la main dessus maintenant... <br>Retrouve-nous sur Instagram : <a class='text-link' href='https://instagram.com/insaerospace/' target='_blank'>@insaerospace</a></p>";
+                }
             });
 
     } catch (error) {
         console.error('Error fetching projets:', error);
+        const articlesContainer = document.getElementById('projectsContainer');
+        if (articlesContainer) {
+            articlesContainer.innerHTML = "<p class='messageErreur'>Aahhh, <b>on a plein de super projets !</b> On n'arrive juste pas à remettre la main dessus maintenant... <br>Retrouve-nous sur Instagram : <a class='text-link' href='https://instagram.com/insaerospace/' target='_blank'>@insaerospace</a></p>";
+        }
     }
 }
 
