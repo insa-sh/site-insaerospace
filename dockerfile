@@ -13,7 +13,7 @@ WORKDIR /frontend
 COPY ./insaerospace-frontend/ .
 
 # Installer les dépendances Python
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r /frontend/requirements.txt
 
 # Collecter les fichiers statiques
 RUN python manage.py collectstatic --noinput
