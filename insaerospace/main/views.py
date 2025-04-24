@@ -249,3 +249,8 @@ def nosMembres(request):
 
 def contact(request):
     return render(request, 'main/contact.html')
+
+
+
+def error_404(request):
+    return render(request, 'main/404.html', status=404)

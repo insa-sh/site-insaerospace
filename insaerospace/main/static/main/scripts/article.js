@@ -8,8 +8,8 @@ async function fetchArticles() {
         const urlParts = window.location.pathname.split('/');
         const articleSlug = urlParts[urlParts.length - 2]; // L'avant dernier car le dernier est vide
         const projectSlug = urlParts[urlParts.length - 3]; // Le slug du projet
-        console.log('Article:', articleSlug);
-        console.log('Projet:', projectSlug);
+        // console.log('Article:', articleSlug);
+        // console.log('Projet:', projectSlug);
 
         // par défaut, un / est rajouté en fin d'url donc le dernier element du tableau est ""
 
@@ -17,7 +17,7 @@ async function fetchArticles() {
         const response = await fetch(`/api/fetch_articles?slug=${articleSlug}&projet=${projectSlug}`);
         const data = await response.json();
         const article = data.data[0];
-        console.log('Fetched articles:', article);
+        // console.log('Fetched articles:', article);
 
         // définir le title de la page
         if (article) {
@@ -43,7 +43,7 @@ async function fetchArticles() {
                 if (article.cover != null) {
                     let miniature_url = uploads_url + article.cover.url;
                     style_minature = `background: linear-gradient(-90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.70) 100%), url('${miniature_url}'); background-size: cover; background-position: center;`
-                    console.log(style_minature);
+                    // console.log(style_minature);
                 }
 
                 articlesContainer.innerHTML = `

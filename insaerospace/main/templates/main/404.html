@@ -1,0 +1,50 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Page introuvable{% endblock %}
+
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'main/article.css' %}">
+<link rel="stylesheet" href="{% static 'main/contact-page.css' %}">
+<link rel="stylesheet" href="{% static 'main/membres.css' %}">
+
+<meta name="description" content="On a envoyé cette page dans l'espace... Malheureusement, elle n'est pas revenue.">
+<!-- robots -->
+<meta name="robots" content="noindex, nofollow">
+
+
+{% endblock %}
+
+{% block content %}
+<div class="classic-page-margin">
+    <h1 class="page-title">Page introuvable</h1>
+
+    <div id="mandatoryContainer">
+        <div class="article-body">
+            <h2>On a envoyé cette page dans l'espace... Malheureusement, elle n'est pas revenue.</h2>
+            <p>Nous n'avons pas réussi à mettre la main sur cette page (404)</p>
+            <br><br>
+            <br>            <br>
+            <p>Si vous vous êtes égaré(e) dans l'espace, <b>nous avons quelques choses intéressantes à vous présenter</b> :</p>
+            <ul class="project-list">
+                <li><a href="{% url 'nos-projets' %}">Nos Projets</a></li>
+                <li><a href="{% url 'accueil' %}">Notre Asso</a></li>
+                <li><a href="{% url 'contact' %}">Nous contacter</a></li>
+                
+                <li><a href="{% url 'nos-membres' %}">La liste de nos membres</a></li>
+
+            </ul>
+
+            <p>Et si vous pensez que notre site est cassé, contactez le club info : <a href="https://insash.org">insash.org</a> !</p>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

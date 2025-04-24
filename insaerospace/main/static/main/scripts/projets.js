@@ -6,7 +6,7 @@ function fetchProjects() {
             .then(response => response.json())
             .then(data => {
                 const projets = data.data;
-                console.log('Fetched projets:', projets);
+                // console.log('Fetched projets:', projets);
 
                 const articlesContainer = document.getElementById('projectsContainer');
                 if (!articlesContainer) {
@@ -21,7 +21,7 @@ function fetchProjects() {
                         articlesContainer.innerHTML = projets
                             .map(projet => {
                                 const date = new Date(projet.createdAt);
-                                console.log(projet.miniature);
+                                // console.log(projet.miniature);
                                 let style_miniature_projet = "";
                                 if (projet.miniature != null) {
                                     let miniature_url = projet.miniature.formats.large.url;

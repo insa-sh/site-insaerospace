@@ -4,12 +4,12 @@ async function fetchArticles() {
     try {
         const urlParts = window.location.pathname.split('/');
         const projectSlug = urlParts[urlParts.length - 2];
-        console.log('Project slug:', projectSlug);
+        // console.log('Project slug:', projectSlug);
 
         const response = await fetch(`/api/fetch_articles?projet=${projectSlug}`);
         const data = await response.json();
         const articles = data.data;
-        console.log('Articles de la catégorie:', articles);
+        // console.log('Articles de la catégorie:', articles);
 
         const articlesContainer = document.getElementById('articlesContainer');
         const projectDetailContainer = document.getElementById('projectDetailContainer');
@@ -31,7 +31,7 @@ async function fetchArticles() {
             return;
         }
         const projet = project_data.data[0];
-        console.log(projet);
+        // console.log(projet);
 
         if (articles && articles.length > 0) {
             document.title = `${articles[0]["projet"]["nom"] || projectSlug} | INSAerospace`;
@@ -60,7 +60,7 @@ async function fetchArticles() {
             if (projet.miniature != null) {
                 let miniature_url = uploads_url + projet.miniature.url;
                 projectDetailContainer.style.backgroundImage = `linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${miniature_url}')`;
-                console.log("miniature url", miniature_url);
+                // console.log("miniature url", miniature_url);
             }
 
             projectDetailContainer.innerHTML = `
