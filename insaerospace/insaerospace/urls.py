@@ -17,13 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from main import views
+from django.urls import path, re_path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.accueil, name='accueil'),
     path('nos-projets/', views.nosProjets, name='nos-projets'),
     path('nos-membres/', views.nosMembres, name='nos-membres'),
-    path('contact/',views.contact, name='contact'),
+    path('contact/', views.contact, name='contact'),
 
     path('nos-projets/<slug:slug_project>/<slug:slug_article>/', views.article_detail, name='article_detail'),
     path('nos-projets/<slug:slug_project>/', views.project_detail, name='project_detail'),
@@ -35,4 +36,8 @@ urlpatterns = [
     path('api/fetch_poles/', views.fetch_poles, name='fetch_poles'),
     path('api/fetch_caroussel/', views.fetch_caroussel, name='tech_caroussel'),
     path('api/fetch_contact/', views.fetch_contact, name='fetch_contact'),
+
+    # Catch all not found pages for URLs not starting with 'api/'
+    
+    re_path(r'^(?!api/|static/).*$' , views.error_404, name='error_404'),
 ]

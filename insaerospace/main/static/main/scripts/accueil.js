@@ -95,12 +95,12 @@ function loadCarousselImages() {
             if (data.images && data.images.length > 0) {
                 // Effacer le contenu initial uniquement s'il y a des images
                 carousselContainer.innerHTML = '';
-                console.log("supprimé");
+                // console.log("supprimé");
                 data.images.forEach(imageData => {
                     const div = document.createElement('div');
                     div.className = 'caroussel-image';
                     carousselContainer.appendChild(div);
-                    console.log("élément créé sans image");
+                    // console.log("élément créé sans image");
 
                     // Créer un objet Image pour précharger l'image
                     const imgPreloader = new Image();
@@ -109,7 +109,7 @@ function loadCarousselImages() {
                         div.style.backgroundImage = `url(${imageData.url})`;
                         div.classList.add('fade-in');
                         carousselContainer.classList.remove('loading'); // si la classe y est encore, la retirer
-                        console.log("affiché");
+                        // console.log("affiché");
                     };
                     imgPreloader.onerror = function() {
                         console.error("Erreur lors du chargement de l'image", imageData.url);
