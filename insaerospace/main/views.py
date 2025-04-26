@@ -134,7 +134,7 @@ def fetch_roles(request):
         if slug_role:
             response = requests.get(f'http://localhost:1337/api/role-membres?populate=*&filters[slug][$eq]={slug_role}', headers=headers)
         elif slug_pole:
-            response = requests.get(f'http://localhost/api/role-membres?populate=*&filters[pole][slug][$eq]={slug_pole}', headers=headers)
+            response = requests.get(f'http://localhost:1337/api/role-membres?populate=*&filters[pole][slug][$eq]={slug_pole}', headers=headers)
         else:
             response = requests.get('http://localhost:1337/api/role-membres?populate=*', headers=headers)
     except requests.exceptions.RequestException as e:
