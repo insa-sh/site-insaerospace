@@ -178,7 +178,7 @@ def fetch_contact(request):
     }
 
     try:
-        response = requests.get('http://127.0.0.1:1337/api/contact-page?fields=titre,contenu', headers=headers)
+        response = requests.get('http://localhost:1337/api/contact-page?fields=titre,contenu', headers=headers)
     except requests.exceptions.RequestException as e:
         print(f"Error contacting backend in fetch_contact: {e}")
         return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
