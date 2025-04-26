@@ -39,5 +39,5 @@ urlpatterns = [
 
     # Catch all not found pages for URLs not starting with 'api/'
     
-    re_path(r'^(?!api/|static/).*$' , views.error_404, name='error_404'),
+    re_path(r'^(?!api/|staticfiles/).*$' , views.error_404, name='error_404'),
 ]

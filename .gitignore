@@ -23,6 +23,7 @@ Thumbs.db
 # Fichiers de configuration secrets
 *.env
 .env.*
+env
 
 # Fichiers statiques collectés
 # /staticfiles/
@@ -58,6 +59,7 @@ pip-delete-this-directory.txt
 # Contenu généré pour les médias (si non versionné)
 # media/
 # uploads/
+staticfiles/
 
 # Fichiers de builds
 build/
