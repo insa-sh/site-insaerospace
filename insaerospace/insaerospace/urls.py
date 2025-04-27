@@ -19,6 +19,8 @@ from django.urls import path
 from main import views
 from django.urls import path, re_path
 
+handler404 = 'main.views.error_404'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.accueil, name='accueil'),
@@ -39,5 +41,5 @@ urlpatterns = [
 
     # Catch all not found pages for URLs not starting with 'api/'
     
-    re_path(r'^(?!api/|staticfiles/).*$' , views.error_404, name='error_404'),
-]
+    ]
+
