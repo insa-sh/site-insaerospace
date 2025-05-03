@@ -2,6 +2,12 @@ import os
 import requests
 from django.http import JsonResponse
 from django.templatetags.static import static
+from dotenv import load_dotenv
+
+load_dotenv()
+
+api_url = os.getenv('API_URL')
+
 
 class SiteInfoMiddleware:
     def __init__(self, get_response):
@@ -17,7 +23,7 @@ class SiteInfoMiddleware:
                 'Authorization': f'Bearer {api_token}'
             }
             try:
-                r = requests.get("http://localhost:1337/api/global", headers=headers)
+                r = requests.get(f"{api_url}/api/global", headers=headers)
                 r.raise_for_status()
                 data = r.json()
 
@@ -27,7 +33,7 @@ class SiteInfoMiddleware:
                 favicon_info = site_data.get("favicon") or {}
                 favicon_path = favicon_info.get("url")
                 if favicon_path and favicon_path is not None:
-                    favicon = f'http://localhost:1337{favicon_path}'
+                    favicon = f'{api_url}{favicon_path}'
                 else:
                     favicon = static("/images/logo/favicon.svg")
             except requests.exceptions.RequestException:

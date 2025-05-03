@@ -1,4 +1,5 @@
-const uploads_url = "http://localhost:1337";
+import { API_URL } from "./config.js";
+const uploads_url = API_URL;
 
 function fetchProjects() {
     try {
