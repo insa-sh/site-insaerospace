@@ -9,6 +9,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+api_url = os.getenv('API_URL')
+
 @require_GET
 def fetch_caroussel(request):
     api_token = os.getenv('API_TOKEN')
@@ -16,7 +18,7 @@ def fetch_caroussel(request):
         'Authorization': f'Bearer {api_token}'
     }
     try:
-        response = requests.get('http://localhost:1337/api/caroussel?populate=*', headers=headers)
+        response = requests.get(api_url+'/api/caroussel?populate=*', headers=headers)
     except requests.exceptions.RequestException as e:
         print(f"Error contacting backend in fetch_caroussel: {e}")
         return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
@@ -30,7 +32,7 @@ def fetch_caroussel(request):
                 for img in item_images:
                     images.append({
                         'name': img['name'],
-                        'url': f"http://localhost:1337{img['url']}"
+                        'url': f"{api_url}{img['url']}"
                     })
             return JsonResponse({'images': images})
         except ValueError as e:
@@ -53,9 +55,9 @@ def fetch_projets(request):
     slug_projet = request.GET.get('slug')
     try:
         if slug_projet:
-            response = requests.get(f'http://localhost:1337/api/projets?populate=*&filters[slug][$eq]={slug_projet}', headers=headers)
+            response = requests.get(f'{api_url}/api/projets?populate=*&filters[slug][$eq]={slug_projet}', headers=headers)
         else:
-            response = requests.get('http://localhost:1337/api/projets?populate=*', headers=headers)
+            response = requests.get(f'{api_url}/api/projets?populate=*', headers=headers)
     except requests.exceptions.RequestException as e:
         print(f"Error contacting backend in fetch_projets: {e}")
         return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
@@ -73,7 +75,7 @@ def fetch_articles(request):
     slug = request.GET.get('slug')
     projet = request.GET.get('projet')
     
-    base_url = 'http://localhost:1337/api/articles?populate=*'
+    base_url = f'{api_url}/api/articles?populate=*'
     sort = '&sort=createdAt:desc'  # Descending order (antichronologique)
 
     if slug and projet:
@@ -107,9 +109,9 @@ def fetch_membres(request):
     slug_membre = request.GET.get('slug')
     try:
         if slug_membre:
-            response = requests.get(f'http://localhost:1337/api/membres?populate=*&filters[slug][$eq]={slug_membre}', headers=headers)
+            response = requests.get(f'{api_url}/api/membres?populate=*&filters[slug][$eq]={slug_membre}', headers=headers)
         else:
-            response = requests.get('http://localhost:1337/api/membres?populate=*', headers=headers)
+            response = requests.get(f'{api_url}/api/membres?populate=*', headers=headers)
     except requests.exceptions.RequestException as e:
         print(f"Error contacting backend in fetch_membres: {e}")
         return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
@@ -132,11 +134,11 @@ def fetch_roles(request):
 
     try:
         if slug_role:
-            response = requests.get(f'http://localhost:1337/api/role-membres?populate=*&filters[slug][$eq]={slug_role}', headers=headers)
+            response = requests.get(f'{api_url}/api/role-membres?populate=*&filters[slug][$eq]={slug_role}', headers=headers)
         elif slug_pole:
-            response = requests.get(f'http://localhost:1337/api/role-membres?populate=*&filters[pole][slug][$eq]={slug_pole}', headers=headers)
+            response = requests.get(f'{api_url}/api/role-membres?populate=*&filters[pole][slug][$eq]={slug_pole}', headers=headers)
         else:
-            response = requests.get('http://localhost:1337/api/role-membres?populate=*', headers=headers)
+            response = requests.get(f'{api_url}/api/role-membres?populate=*', headers=headers)
     except requests.exceptions.RequestException as e:
         print(f"Error contacting backend in fetch_roles: {e}")
         return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
@@ -157,9 +159,9 @@ def fetch_poles(request):
     slug_pole = request.GET.get('slug')
     try:
         if slug_pole:
-            response = requests.get(f'http://localhost:1337/api/pole-roles?populate=*&filters[slug][$eq]={slug_pole}', headers=headers)
+            response = requests.get(f'{api_url}/api/pole-roles?populate=*&filters[slug][$eq]={slug_pole}', headers=headers)
         else:
-            response = requests.get('http://localhost:1337/api/pole-roles?populate=*', headers=headers)
+            response = requests.get(f'{api_url}/api/pole-roles?populate=*', headers=headers)
     except requests.exceptions.RequestException as e:
         print(f"Error contacting backend in fetch_poles: {e}")
         return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
@@ -178,7 +180,7 @@ def fetch_contact(request):
     }
 
     try:
-        response = requests.get('http://localhost:1337/api/contact-page?fields=titre,contenu', headers=headers)
+        response = requests.get(f'{api_url}/api/contact-page?fields=titre,contenu', headers=headers)
     except requests.exceptions.RequestException as e:
         print(f"Error contacting backend in fetch_contact: {e}")
         return JsonResponse({'error': 'Impossible d\'accéder au backend'}, status=503)
@@ -221,7 +223,7 @@ def accueil(request):
         headers = {
             'Authorization': f'Bearer {api_token}'
         }
-        response = requests.get('http://localhost:1337/api/global', headers=headers)
+        response = requests.get(f'{api_url}/api/global', headers=headers)
         if response.status_code == 200:
             data = response.json().get('data', {})
             nb_micro_fusees = data.get('nombredemicrofusees', 0)

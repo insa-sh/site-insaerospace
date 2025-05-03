@@ -1,6 +1,7 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+import { API_URL } from "./config.js";
 
-const uploads_url = "http://localhost:1337";
+const uploads_url = API_URL;
 
 async function fetchArticles() {
     try {
@@ -41,6 +42,7 @@ async function fetchArticles() {
                 // miniature background
                 let style_minature = "";
                 if (article.cover != null) {
+                    console.log(article.cover);
                     let miniature_url = uploads_url + article.cover.url;
                     style_minature = `background: linear-gradient(-90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.70) 100%), url('${miniature_url}'); background-size: cover; background-position: center;`
                     // console.log(style_minature);
