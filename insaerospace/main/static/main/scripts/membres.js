@@ -79,7 +79,7 @@ function fetchMembres() {
                             ${membresDuPole.map(membre => `
                                 <div class="membre">
                                     <div class="photo-de-profil">
-                                    <img src="${membre.photo_de_profil ? api_url + membre.photo_de_profil.url : api_url + '/uploads/default_pp_a375f13862.png'}" alt="${membre.nom}">
+                                    <img src="${membre.photo_de_profil ? api_url + membre.photo_de_profil.url : static_default_pp_url}" alt="${membre.nom}">
                                     ${membre.role && membre.role.slug !== 'membre' && getEmojiAnimationUrl(roles, membre.role.slug) != null ? '<div class="emoji-box" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji1" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji2" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji3" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji4" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji5" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/></div>' : ''}
                                     </div>
                                     <h3>${membre.nom}</h3>
