@@ -101,7 +101,7 @@ async function fetchArticles() {
                 if (article.cover && article.cover.url) {
                     ogImg.setAttribute('content', uploads_url + article.cover.url);
                 } else {
-                    ogImg.setAttribute('content', '/static/images/sharing/og-image.png');
+                    ogImg.setAttribute('content', STATIC_URL + 'images/sharing/og-image.png');
                 }
                 // OG url
                 let ogUrl = document.querySelector('meta[property="og:url"]');
