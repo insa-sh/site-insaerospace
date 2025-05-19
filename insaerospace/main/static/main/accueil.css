@@ -139,7 +139,7 @@ header {
 
 }
 
-#caroussel-text-content h2 {
+#caroussel-text-content h1 {
     font-size: 80px;
 }
 
@@ -305,7 +305,7 @@ section {
 
 @media (max-width: 800px) {
 
-    #caroussel-text-content h2 {
+    #caroussel-text-content h1 {
         font-size: 40px;
     }
 
