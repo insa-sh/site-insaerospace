@@ -4,6 +4,23 @@
 {% block title %}Association d'aérospatiale de l'INSA HdF{% endblock %}
 
 {% block extrahead %}
+<!-- SEO -->
+<meta name="description" content="{{ site_description }}">
+<meta name="keywords" content="INSAerospace, fusée, aérospatiale, INSA, Hauts-de-France, association, étudiants">
+
+<link rel="canonical" href="https://insaerospace.com/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="INSAerospace - Association d'aérospatiale de l'INSA Hauts-de-France">
+<meta property="og:description" content="{{ site_description }}">
+<meta property="og:image" content="{% static 'images/sharing/og-image.png' %}">
+<meta property="og:url" content="https://insaerospace.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="INSAerospace">
+<meta property="og:locale" content="fr_FR">
+
+
+
 <link rel="stylesheet" type="text/css" href="{% static 'main/accueil.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'main/article.css' %}">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
