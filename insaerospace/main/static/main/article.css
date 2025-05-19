@@ -368,6 +368,14 @@ div.article {
     }
 
 
+    /* soulignements */
+
+    u {
+        text-decoration: underline;
+        text-decoration-color: var(--red-insaerospace);
+        text-decoration-thickness: 3px;
+        text-underline-offset: 2px;
+    }
     /* blocquote */
     blockquote {
         margin: 16px 0;
