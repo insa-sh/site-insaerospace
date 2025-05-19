@@ -310,8 +310,11 @@ div.article {
 
     img {
         margin: 20px 0;
-        width: -webkit-fill-available;
-        max-width: min(900px,60vw);
+        /* width: 100%; */
+        max-width: min(100%,600px);
+        height: auto;
+        max-height: 80vh;
+        object-fit: contain;
         justify-self: center;
 
         border: solid 1px lightgrey;
@@ -319,6 +322,12 @@ div.article {
 
         box-shadow: #ffdbdb6e 0px 0px 6px 1px; /* à vérifier */
     }
+
+    h2:has(img), p:has(img) {
+        text-align: center;
+    }
+
+
 
     /* chanegr le style des listes à puces pour remplacer les puces par des tirets moyens */
     ul {
