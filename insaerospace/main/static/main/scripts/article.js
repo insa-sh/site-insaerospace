@@ -65,6 +65,68 @@ async function fetchArticles() {
                         </div>
                     </div>
                 `;
+                // Ajout dynamique des balises meta pour le SEO et le partage
+                const head = document.head;
+                // Meta description
+                let metaDesc = document.querySelector('meta[name="description"]');
+                if (!metaDesc) {
+                    metaDesc = document.createElement('meta');
+                    metaDesc.setAttribute('name', 'description');
+                    head.appendChild(metaDesc);
+                }
+                metaDesc.setAttribute('content', article.description || article.title || 'INSAerospace');
+                // OG title
+                let ogTitle = document.querySelector('meta[property="og:title"]');
+                if (!ogTitle) {
+                    ogTitle = document.createElement('meta');
+                    ogTitle.setAttribute('property', 'og:title');
+                    head.appendChild(ogTitle);
+                }
+                ogTitle.setAttribute('content', article.title || 'INSAerospace');
+                // OG description
+                let ogDesc = document.querySelector('meta[property="og:description"]');
+                if (!ogDesc) {
+                    ogDesc = document.createElement('meta');
+                    ogDesc.setAttribute('property', 'og:description');
+                    head.appendChild(ogDesc);
+                }
+                ogDesc.setAttribute('content', article.description || article.title || 'INSAerospace');
+                // OG image
+                let ogImg = document.querySelector('meta[property="og:image"]');
+                if (!ogImg) {
+                    ogImg = document.createElement('meta');
+                    ogImg.setAttribute('property', 'og:image');
+                    head.appendChild(ogImg);
+                }
+                if (article.cover && article.cover.url) {
+                    ogImg.setAttribute('content', uploads_url + article.cover.url);
+                } else {
+                    ogImg.setAttribute('content', STATIC_URL + 'images/sharing/og-image.png');
+                }
+                // OG url
+                let ogUrl = document.querySelector('meta[property="og:url"]');
+                if (!ogUrl) {
+                    ogUrl = document.createElement('meta');
+                    ogUrl.setAttribute('property', 'og:url');
+                    head.appendChild(ogUrl);
+                }
+                ogUrl.setAttribute('content', window.location.href);
+                // OG type
+                let ogType = document.querySelector('meta[property="og:type"]');
+                if (!ogType) {
+                    ogType = document.createElement('meta');
+                    ogType.setAttribute('property', 'og:type');
+                    head.appendChild(ogType);
+                }
+                ogType.setAttribute('content', 'article');
+                // OG site_name
+                let ogSite = document.querySelector('meta[property="og:site_name"]');
+                if (!ogSite) {
+                    ogSite = document.createElement('meta');
+                    ogSite.setAttribute('property', 'og:site_name');
+                    head.appendChild(ogSite);
+                }
+                ogSite.setAttribute('content', 'INSAerospace');
             }
         } else {
             console.error('articlesContainer is null');

@@ -1,9 +1,26 @@
 {% extends "main/base.html" %}
 {% load static %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Association d'aérospatiale de l'INSA HdF{% endblock %}
 
 {% block extrahead %}
+<!-- SEO -->
+<meta name="description" content="{{ site_description }}">
+<meta name="keywords" content="INSAerospace, fusée, aérospatiale, INSA, Hauts-de-France, association, étudiants">
+
+<link rel="canonical" href="https://insaerospace.com/">
+
+<!-- Open Graph -->
+<meta property="og:title" content="INSAerospace - Association d'aérospatiale de l'INSA Hauts-de-France">
+<meta property="og:description" content="{{ site_description }}">
+<meta property="og:image" content="{% static 'images/sharing/og-image.png' %}">
+<meta property="og:url" content="https://insaerospace.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="INSAerospace">
+<meta property="og:locale" content="fr_FR">
+
+
+
 <link rel="stylesheet" type="text/css" href="{% static 'main/accueil.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'main/article.css' %}">
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -15,7 +32,7 @@
 
 <section>
     <div id="caroussel-text-content">
-        <h2><span class="logo-red-part">INSA</span>erospace</h2>
+        <h1><span class="logo-red-part">INSA</span>erospace</h1>
         <p>{{site_description}}</p>
     </div>
     <div class="caroussel loading" id="caroussel-container">
@@ -80,7 +97,7 @@
                 </ul>
             </div>
         </div>
-        <a href="nos-projets" type="button">Tous nos projets</a>
+        <a href="{% url 'nos-projets' %}" type="button" title="Voir tous nos projets">Tous nos projets</a>
 
 
         <h2>Nos objectifs :</h2>
@@ -113,9 +130,9 @@
 
         <h2>Quand se retrouver ?</h2>
         <div class="flex" id="socials">
-            <a href="https://instagram.com/insaerospace" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://instagram.com/insaerospace" target="_blank" title="Aller sur notre page Instagram"><i class="fa-brands fa-instagram"></i></a>
             <!-- <a href="http://facebook.com/insaerospace" target="_blank"><i class="fa-brands fa-facebook"></i></a> -->
-            <a href="https://www.linkedin.com/company/insaerospace" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/company/insaerospace" target="_blank" title ="Aller sur notre page LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
             <!-- <a href="http://youtube.com/insaerospace" target="_blank"><i class="fa-brands fa-youtube"></i></a> -->
         </div>
 
