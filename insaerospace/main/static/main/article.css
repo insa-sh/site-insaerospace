@@ -514,7 +514,23 @@ div.article {
 
 
 
+.list-sponsors {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10vw;
+    margin-top: 40px;
 
+    img {
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        width: auto;
+        height: 60px;
+    }
+}
 
 
 
