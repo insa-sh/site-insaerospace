@@ -292,17 +292,36 @@ nav a {
 
 /* footer */
 footer {
+    background-color: var(--red-insaerospace);
+    color: #fff;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    background-color: var(--red-insaerospace);
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     padding-left: 60px;
     padding-right: 60px;
     padding-top: 20px;
     padding-bottom: 20px;
+
+}
+
+footer .footer-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    width: 100%;
+    gap: 30px;
+}
+
+
+footer .footer-data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-items: flex-start;
     gap: 12px;
-    color: #fff;
 }
 
 footer a {
@@ -311,6 +330,28 @@ footer a {
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
+}
+
+
+footer .footer-sponsors{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+    gap: 20px;
+    flex: 1;
+    min-width: min(90vw, 400px);
+    margin: 20px 0;
+
+    >a {
+        flex:1;
+        >img {
+            width: 100%;
+            height: auto;
+            max-width: 200px;
+        }
+    }
 }
 
 .insaerospace {
@@ -328,14 +369,14 @@ footer a {
     margin-bottom: 20px;
 }
 
-footer>div {
+footer .footer-data>div {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
-footer>div>a {
+footer .footer-data>div>a {
     color: white;
     text-decoration: none;
     font-family: "Raleway";
@@ -343,8 +384,11 @@ footer>div>a {
     font-weight: 400;
 }
 
+
+
 .insash {
     margin: auto;
+    text-align: center;
 }
 
 
@@ -472,4 +516,21 @@ footer>div>a {
 
         }
     }
+
+    footer .footer-flex {
+        flex-direction: column;
+    }
+
+    footer .footer-data{
+        width: 100%;
+    }
+    footer .footer-sponsors{
+    align-items: center;
+    
+}
+
+.insash {
+    margin-top: 20px;
+}
+
 }
