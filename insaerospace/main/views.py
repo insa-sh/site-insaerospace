@@ -231,7 +231,7 @@ def accueil(request):
         print(f"Error fetching global data: {e}")
 
     # Récupérer la description du site depuis le middleware ou le cookie
-    site_description = getattr(request, 'site_description', request.COOKIES.get("site_description", "INSAerospace, c'est l'association de passionnés d'aérospatiale et d'astronomie de l'INSA Haut-de-France !"))
+    site_description = getattr(request, 'site_description', request.COOKIES.get("site_description", "INSAerospace, c'est l'association de passionnés d'aérospatiale et d'astronomie de l'INSA Hauts-de-France !"))
 
     # Passer la variable au template
     return render(request, 'main/accueil.html', {'membres_count': membres_count, 'nb_micro_fusees': nb_micro_fusees, 'experience_years': exp_years, 'site_description': site_description})
@@ -251,5 +251,5 @@ def nosMembres(request):
 def contact(request):
     return render(request, 'main/contact.html')
 
-def error_404(request, exception):
+def error_404(request, exception=None):
     return render(request, 'main/404.html', status=404)

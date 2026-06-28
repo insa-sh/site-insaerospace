@@ -14,7 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+# from django.contrib import admin
 from django.urls import path
 from main import views
 from django.urls import path, re_path
@@ -22,7 +22,7 @@ from django.urls import path, re_path
 handler404 = 'main.views.error_404'
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('', views.accueil, name='accueil'),
     path('nos-projets/', views.nosProjets, name='nos-projets'),
     path('nos-membres/', views.nosMembres, name='nos-membres'),
@@ -39,7 +39,8 @@ urlpatterns = [
     path('api/fetch_caroussel/', views.fetch_caroussel, name='tech_caroussel'),
     path('api/fetch_contact/', views.fetch_contact, name='fetch_contact'),
 
-    # Catch all not found pages for URLs not starting with 'api/'
+    # Catch all not found pages for URLs not starting with 'api/ or /manage
+    re_path(r'^(?!api/|manage).*$', views.error_404, name='error_404'),
     
     ]
 

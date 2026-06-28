@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ["localhost","insaerospace.com","127.0.0.1","insaerospace.insash
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

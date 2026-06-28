@@ -1,6 +1,27 @@
 import { API_URL } from "./config.js";
 const uploads_url = API_URL;
 
+function getMiniatureUrl(miniature) {
+    if (!miniature) {
+        return null;
+    }
+
+    return miniature.formats?.large?.url
+        || miniature.formats?.medium?.url
+        || miniature.formats?.small?.url
+        || miniature.formats?.thumbnail?.url
+        || miniature.url
+        || null;
+}
+
+function resolveAssetUrl(url) {
+    if (!url) {
+        return '';
+    }
+
+    return url.startsWith('http') ? url : uploads_url + url;
+}
+
 function fetchProjects() {
     try {
         fetch('/api/fetch_projets')
@@ -24,9 +45,9 @@ function fetchProjects() {
                                 const date = new Date(projet.createdAt);
                                 // console.log(projet.miniature);
                                 let style_miniature_projet = "";
-                                if (projet.miniature != null) {
-                                    let miniature_url = projet.miniature.formats.large.url;
-                                    style_miniature_projet = `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${uploads_url + miniature_url}');`;
+                                const miniature_url = getMiniatureUrl(projet.miniature);
+                                if (miniature_url) {
+                                    style_miniature_projet = `background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%), url('${resolveAssetUrl(miniature_url)}');`;
                                 }
                                 
                                 return `

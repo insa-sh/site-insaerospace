@@ -2,19 +2,38 @@ import { API_URL } from './config.js';
 
 const api_url = API_URL;
 
+function resolveAssetUrl(url) {
+    if (!url) {
+        return null;
+    }
+
+    return url.startsWith('http') ? url : api_url + url;
+}
+
+function getMediaUrl(media) {
+    if (!media) {
+        return null;
+    }
+
+    return media.formats?.thumbnail?.url
+        || media.formats?.small?.url
+        || media.formats?.medium?.url
+        || media.formats?.large?.url
+        || media.url
+        || null;
+}
+
+function getEmojiAnimationUrl(roles, role_slug) {
+    const role = roles.find(role => role.slug === role_slug);
+    return resolveAssetUrl(getMediaUrl(role?.emoji_animation));
+}
+
+function getProfilePhotoUrl(photo, fallbackUrl) {
+    return resolveAssetUrl(getMediaUrl(photo)) || fallbackUrl;
+}
+
 function fetchMembres() {
     try {
-        function getEmojiAnimationUrl(roles, role_slug) {
-            const role = roles.find(role => role.slug === role_slug);
-            if (role && role.emoji_animation) {
-                if (role.emoji_animation.formats.thumbnail.url) {
-                    return api_url + role.emoji_animation.formats.thumbnail.url;
-                } else {
-                    return api_url + role.emoji_animation.url;
-                }
-            }
-            return null;
-        }
 
         // Récupérer les pôles, les rôles et les membres
         const polesResponse = fetch(`/api/fetch_poles`);
@@ -79,8 +98,11 @@ function fetchMembres() {
                             ${membresDuPole.map(membre => `
                                 <div class="membre">
                                     <div class="photo-de-profil">
-                                    <img src="${membre.photo_de_profil ? api_url + membre.photo_de_profil.url : static_default_pp_url}" alt="${membre.nom}">
-                                    ${membre.role && membre.role.slug !== 'membre' && getEmojiAnimationUrl(roles, membre.role.slug) != null ? '<div class="emoji-box" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji1" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji2" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji3" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji4" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/><img class="emoji5" src="'+getEmojiAnimationUrl(roles, membre.role.slug) +'"/></div>' : ''}
+                                    <img src="${getProfilePhotoUrl(membre.photo_de_profil, static_default_pp_url)}" alt="${membre.nom}">
+                                    ${(() => {
+                                        const emojiUrl = membre.role && membre.role.slug !== 'membre' ? getEmojiAnimationUrl(roles, membre.role.slug) : null;
+                                        return emojiUrl ? '<div class="emoji-box"><img class="emoji1" src="'+emojiUrl +'"/><img class="emoji2" src="'+emojiUrl +'"/><img class="emoji3" src="'+emojiUrl +'"/><img class="emoji4" src="'+emojiUrl +'"/><img class="emoji5" src="'+emojiUrl +'"/></div>' : '';
+                                    })()}
                                     </div>
                                     <h3>${membre.nom}</h3>
                                     <p class="role">${roles.find(role => role.slug === membre.role.slug).titre}</p>

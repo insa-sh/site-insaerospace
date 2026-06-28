@@ -37,12 +37,12 @@ class SiteInfoMiddleware:
                     favicon = f'{api_url}{favicon_path}'
                 else:
                     favicon = static("/images/logo/favicon.svg")
-                site_description = site_data.get("siteDescription") or "INSAerospace, c'est l'association de passionnés d'aérospatiale et d'astronomie de l'INSA Haut-de-France !"
+                site_description = site_data.get("siteDescription") or "INSAerospace, c'est l'association de passionnés d'aérospatiale et d'astronomie de l'INSA Hauts-de-France !"
             except requests.exceptions.RequestException:
                 # SI l'API est down, on utilise la valeur par défaut
                 site_name = "INSAerospace"
                 favicon = static("/images/logo/favicon.svg")
-                site_description = "INSAerospace, c'est l'association de passionnés d'aérospatiale et d'astronomie de l'INSA Haut-de-France ! "
+                site_description = "INSAerospace, c'est l'association de passionnés d'aérospatiale et d'astronomie de l'INSA Hauts-de-France ! "
 
             # Add site_name, favicon, and site_description to the request context
             request.site_name = site_name

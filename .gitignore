@@ -22,7 +22,6 @@ Thumbs.db
 
 # Fichiers de configuration secrets
 *.env
-.env.*
 env
 
 # Fichiers statiques collectés

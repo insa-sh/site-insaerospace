@@ -2,6 +2,72 @@ import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
 import { API_URL } from "./config.js";
 
 const uploads_url = API_URL;
+const DEFAULT_OG_IMAGE = '/static/images/sharing/og-image.png';
+
+function resolveAssetUrl(url) {
+    if (!url) {
+        return '';
+    }
+
+    return url.startsWith('http') ? url : uploads_url + url;
+}
+
+function getMediaUrl(media) {
+    if (!media) {
+        return null;
+    }
+
+    return media.formats?.large?.url
+        || media.formats?.medium?.url
+        || media.formats?.small?.url
+        || media.formats?.thumbnail?.url
+        || media.url
+        || null;
+}
+
+function getBlockText(block) {
+    return (block.children || []).map(child => child.text || '').join('');
+}
+
+function renderContent(content) {
+    if (!content) {
+        return '<p class="messageErreur">Cet article est vide...</p>';
+    }
+
+    if (typeof content === 'string') {
+        return marked(content);
+    }
+
+    if (Array.isArray(content)) {
+        const html = content.map(block => {
+            if (block.type === 'paragraph') {
+                const text = getBlockText(block);
+                return text ? '<p>' + text + '</p>' : '';
+            }
+
+            if (block.type === 'heading') {
+                const level = Math.min(Math.max(block.level || 2, 2), 6);
+                const text = getBlockText(block);
+                return text ? '<h' + level + '>' + text + '</h' + level + '>' : '';
+            }
+
+            if (block.type === 'list') {
+                const tag = block.format === 'ordered' ? 'ol' : 'ul';
+                const items = (block.children || []).map(item => {
+                    const text = getBlockText(item);
+                    return text ? '<li>' + text + '</li>' : '';
+                }).join('');
+                return items ? '<' + tag + '>' + items + '</' + tag + '>' : '';
+            }
+
+            return '';
+        }).join('');
+
+        return html || '<p class="messageErreur">Cet article est vide...</p>';
+    }
+
+    return '<p class="messageErreur">Cet article est vide...</p>';
+}
 
 async function fetchArticles() {
     try {
@@ -16,13 +82,17 @@ async function fetchArticles() {
 
         // Modifier l'URL de la requête pour inclure le slug comme paramètre de requête
         const response = await fetch(`/api/fetch_articles?slug=${articleSlug}&projet=${projectSlug}`);
+        if (!response.ok) {
+            throw new Error(`API request failed with status ${response.status}`);
+        }
+
         const data = await response.json();
-        const article = data.data[0];
+        const article = Array.isArray(data.data) ? data.data[0] : null;
         // console.log('Fetched articles:', article);
 
         // définir le title de la page
         if (article) {
-            document.title = `${article["title"] + " | INSAerospace" || articleSlug + " | INSAerospace" || 'Projet sans titre | INSAerospace'}`;
+            document.title = `${article.title || articleSlug || 'Article sans titre'} | INSAerospace`;
         } else {
             document.title = `${articleSlug + " | INSAerospace" || 'Article sans titre | INSAerospace'}`;
         }
@@ -41,11 +111,9 @@ async function fetchArticles() {
             } else {
                 // miniature background
                 let style_minature = "";
-                if (article.cover != null) {
-                    let miniature_url = uploads_url + article.cover.url;
-                    style_minature = `background: linear-gradient(-90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.70) 100%), url('${miniature_url}'); background-size: cover; background-position: center;`
-                    style_minature = `background: linear-gradient(-90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.70) 100%), url('${miniature_url}'); background-size: cover; background-position: center;`
-                    // console.log(style_minature);
+                const coverUrl = getMediaUrl(article.cover);
+                if (coverUrl) {
+                    style_minature = `background: linear-gradient(-90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.70) 100%), url('${resolveAssetUrl(coverUrl)}'); background-size: cover; background-position: center;`;
                 }
 
                 articlesContainer.innerHTML = `
@@ -61,7 +129,7 @@ async function fetchArticles() {
                             })}</p>
                         </div>
                         <div class='article-body'>
-                            ${article.content ? marked(article.content) : '<p class="messageErreur">Cet article est vide...</p>'}
+                            ${renderContent(article.content)}
                         </div>
                     </div>
                 `;
@@ -98,11 +166,8 @@ async function fetchArticles() {
                     ogImg.setAttribute('property', 'og:image');
                     head.appendChild(ogImg);
                 }
-                if (article.cover && article.cover.url) {
-                    ogImg.setAttribute('content', uploads_url + article.cover.url);
-                } else {
-                    ogImg.setAttribute('content', STATIC_URL + 'images/sharing/og-image.png');
-                }
+                const ogImageUrl = getMediaUrl(article.cover);
+                ogImg.setAttribute('content', ogImageUrl ? resolveAssetUrl(ogImageUrl) : DEFAULT_OG_IMAGE);
                 // OG url
                 let ogUrl = document.querySelector('meta[property="og:url"]');
                 if (!ogUrl) {
